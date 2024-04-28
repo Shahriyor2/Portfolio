@@ -23,6 +23,8 @@ const siderStyle = {
   lineHeight: "120px",
   color: "#fff",
   backgroundColor: "white",
+  display: "flex",
+  justifyContent: "center",
 };
 const footerStyle = {
   textAlign: "center",
@@ -30,7 +32,7 @@ const footerStyle = {
   backgroundColor: "#4096ff",
 };
 const layoutStyle = {
-  borderRadius: 8,
+  borderRadius: 20,
   overflow: "hidden",
   margin: " 40px",
   width: "calc(50% - 8px)",
