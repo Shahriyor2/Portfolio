@@ -1,0 +1,40 @@
+.containerBlock {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  font-size: 22px;
+  margin-bottom: 157px;
+
+  .headerLogo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      margin-right: 12.71px;
+    }
+  }
+
+  .aboutMe {
+    display: flex;
+    list-style-type: none;
+
+    li {
+      margin-right: 48px;
+    }
+
+    li:nth-child(3) {
+      margin-right: 0px;
+    }
+  }
+
+  .socialMedia {
+    img {
+      margin-right: 29px;
+    }
+    img:nth-child(3) {
+      margin-right: 0px;
+    }
+  }
+}

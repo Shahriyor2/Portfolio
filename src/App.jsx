@@ -1,61 +1,16 @@
-import { Flex, Layout } from "antd";
-import { HeaderView } from "./components/InfoBlock/Layout/Header";
+import { Lorem } from "./Components/Lorem/Lorem";
+import { NavbarView } from "./Components/Navbar/Navbar";
+import { Projects } from "./Components/Projects/Projects";
+import classes from "./index..module.css";
 
-const { Header, Footer, Sider, Content } = Layout;
-
-const headerStyle = {
-  textAlign: "center",
-  color: "#fff",
-  height: 64,
-  paddingInline: 48,
-  lineHeight: "64px",
-  backgroundColor: "#4096ff",
-};
-const contentStyle = {
-  textAlign: "center",
-  minHeight: 120,
-  lineHeight: "120px",
-  color: "#fff",
-  backgroundColor: "#0958d9",
-};
-const siderStyle = {
-  textAlign: "center",
-  lineHeight: "120px",
-  color: "#fff",
-  backgroundColor: "white",
-  display: "flex",
-  justifyContent: "center",
-};
-const footerStyle = {
-  textAlign: "center",
-  color: "#fff",
-  backgroundColor: "#4096ff",
-};
-const layoutStyle = {
-  borderRadius: 20,
-  overflow: "hidden",
-  margin: " 40px",
-  width: "calc(50% - 8px)",
-  maxWidth: "calc(100% - 8px)",
-};
-
-function App() {
+const App = () => {
   return (
-    <>
-      <Flex>
-        <Layout style={layoutStyle}>
-          <Sider width="25%" style={siderStyle}>
-            <HeaderView />
-          </Sider>
-          <Layout>
-            <Header style={headerStyle}>Header</Header>
-            <Content style={contentStyle}>Content</Content>
-            <Footer style={footerStyle}>Footer</Footer>
-          </Layout>
-        </Layout>
-      </Flex>
-    </>
+    <div className={classes["container"]}>
+      <NavbarView />
+      <Lorem />
+      <Projects />
+    </div>
   );
-}
+};
 
 export default App;
