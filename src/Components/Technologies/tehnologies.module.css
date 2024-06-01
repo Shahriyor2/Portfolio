@@ -1,0 +1,42 @@
+.title {
+  margin-bottom: 133px;
+  font-size: 64px;
+  color: white;
+}
+
+.advenced {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 108px;
+  color: aliceblue;
+  font-size: 36px;
+}
+
+.dashboard {
+  height: 38.3px;
+  border: 1px solid white;
+  width: 1320px;
+  border-radius: 20px;
+  padding: 7px;
+  margin-bottom: 54px;
+
+  .double__dashboard {
+    height: 20.3px;
+    border-radius: 20px;
+    background: rgb(19, 173, 199);
+    background: linear-gradient(
+      90deg,
+      rgba(19, 173, 199, 1) 0%,
+      rgba(105, 120, 209, 1) 58%,
+      rgba(148, 93, 214, 1) 100%
+    );
+  }
+}
+
+.overlayDahboardBlock {
+  /* width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column; */
+  /* align-items: center; */
+}

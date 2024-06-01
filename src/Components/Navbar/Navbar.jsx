@@ -11,8 +11,12 @@ function NavbarView() {
 
       <div>
         <ul className={classes["aboutMe"]}>
-          <li>Projects</li>
-          <li>Tehnologies</li>
+          <li>
+            <a href="#projects">Projects</a>
+          </li>
+          <li>
+            <a href="#tehnologies">Tehnologies</a>
+          </li>
           <li>About me</li>
         </ul>
       </div>
