@@ -1,0 +1,35 @@
+.someinfo-container {
+  background-color: #f1f1f1;
+
+  padding: 55px 30px;
+
+  .content {
+    max-width: 1400px;
+    margin: 0 auto;
+    background-color: white;
+    display: flex;
+    gap: 50px;
+    padding: 20px;
+
+    img {
+      object-fit: cover;
+    }
+
+    &__right-section {
+      padding-top: 20px;
+
+      h1 {
+        margin-bottom: 9px;
+        font-size: 26px;
+        font-weight: 500;
+        font-style: normal;
+        line-height: 1.5em;
+      }
+
+      p {
+        line-height: 1.5em;
+        font-size: 16px;
+      }
+    }
+  }
+}

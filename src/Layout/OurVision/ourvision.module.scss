@@ -1,0 +1,36 @@
+.ourvision-container {
+  height: 500px;
+  position: relative;
+  //   overflow: hidden;
+
+  .content {
+    width: 100%;
+    height: 100%;
+
+    img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      filter: brightness(60%);
+    }
+
+    &__info-text {
+      position: relative;
+      top: -85%;
+      text-align: center;
+      color: white;
+      padding: 100px;
+
+      h2 {
+        font-size: 19px;
+        font-weight: 500;
+        line-height: 1.3em;
+      }
+
+      p {
+        font-size: 18px;
+        line-height: 1.5em;
+      }
+    }
+  }
+}

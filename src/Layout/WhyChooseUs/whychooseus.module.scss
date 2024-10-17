@@ -1,0 +1,42 @@
+.whychooseus-container {
+  padding-top: 70px;
+
+  .whychooseus-content {
+    margin: 0 auto;
+    font-size: 25px;
+    line-height: 37.5px;
+    color: #0000008a;
+    width: max-content;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 40px;
+
+    h1 {
+      font-weight: 600;
+    }
+
+    &__hr {
+      width: 200px;
+      border: 0.5px solid #0000008a;
+      opacity: 0.5;
+      height: 1px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+      margin-bottom: 20px;
+
+      hr {
+        width: calc(100% - 65%);
+        border: 2px solid #3aadda;
+      }
+    }
+
+    p {
+      font-size: 16px;
+      color: #0000008a;
+      line-height: 24px;
+    }
+  }
+}

@@ -1,0 +1,64 @@
+.clientinfo-container {
+  background: #f1f1f1;
+
+  .content {
+    height: 24px;
+    max-width: 1240px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    padding: 5px 30px;
+  }
+
+  .email {
+    font-size: 14px;
+    a {
+      display: flex;
+      gap: 7px;
+      opacity: 0.7;
+
+      &:hover {
+        color: #3aadda;
+      }
+
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+
+  .phone {
+    font-size: 14px;
+    a {
+      display: flex;
+      gap: 7px;
+      opacity: 0.7;
+
+      &:hover {
+        color: #3aadda;
+      }
+
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+
+  .social {
+    display: flex;
+    gap: 12px;
+    opacity: 0.7;
+
+    a {
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+}

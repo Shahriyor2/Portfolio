@@ -1,0 +1,82 @@
+.footer-container {
+  background-color: #212121;
+  padding: 0px 30px;
+  padding-top: 30px;
+
+  .content {
+    color: white;
+
+    .overlay {
+      display: flex;
+      justify-content: center;
+      gap: 100px;
+      border-bottom: 1px solid #3b3b3b;
+      padding-bottom: 30px;
+
+      &__products {
+        max-width: 270px;
+        &_title {
+          padding-bottom: 10px;
+          border-bottom: 1px solid #3b3b3b;
+          margin-bottom: 10px;
+
+          h1 {
+            line-height: 1.5em;
+            font-size: 17px;
+          }
+        }
+
+        &_list {
+          ul {
+            li {
+              padding: 10px 7px;
+              border-bottom: 1px dashed #3b3b3b;
+
+              &:hover {
+                color: #3aadda;
+              }
+            }
+          }
+        }
+      }
+
+      &__contacts {
+        max-width: 270px;
+        &_title {
+          padding-bottom: 10px;
+          border-bottom: 1px solid #3b3b3b;
+          margin-bottom: 10px;
+
+          h1 {
+            font-size: 17px;
+            line-height: 1.5em;
+          }
+        }
+
+        &_list {
+          ul {
+            li {
+              display: flex;
+
+              padding: 10px 7px;
+              border-bottom: 1px dashed #3b3b3b;
+
+              & span:hover {
+                color: #3aadda;
+              }
+
+              svg {
+                margin-right: 7px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .afterAll {
+      padding: 30px 10px;
+      text-align: center;
+    }
+  }
+}

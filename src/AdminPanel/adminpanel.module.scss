@@ -1,0 +1,160 @@
+.admin-container {
+  height: 100vh;
+  background-color: #f5f5f5;
+  padding: 50px 20px;
+  max-width: 2400px;
+  margin: 0 auto;
+
+  .content {
+    max-width: 1500px;
+    min-height: 100px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+
+    h1 {
+      text-align: center;
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+
+    input {
+      width: 170px;
+      height: 30px;
+      border-radius: 4px;
+      padding: 0 7px;
+      border: 1px solid #acacac;
+      font-size: 17px;
+    }
+
+    .createCatageries {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 2px solid #dddddd;
+      padding: 30px 10px 15px;
+
+      &__content {
+        display: flex;
+        justify-content: space-around;
+        gap: 50px;
+        padding-bottom: 10px;
+
+        &_id {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          p {
+            font-style: oblique;
+          }
+        }
+
+        &_name {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          p {
+            font-style: oblique;
+          }
+        }
+      }
+      button {
+        width: calc(100% - 20%);
+        cursor: pointer;
+        border: 1px solid rgb(197, 197, 197);
+        padding: 4px;
+        border-radius: 7px;
+        transition: all 0.15s ease-in;
+        font-size: 16px;
+
+        &:hover {
+          transform: translateY(-2px);
+          background-color: green;
+          color: white;
+        }
+      }
+    }
+
+    .createProduct {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 30px;
+      border: 2px solid #dddddd;
+      padding: 30px 10px 15px;
+
+      &__content {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 50px;
+        padding-bottom: 10px;
+
+        &_id {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          p {
+            font-style: oblique;
+          }
+        }
+
+        &_name {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          p {
+            font-style: oblique;
+          }
+        }
+
+        &_description {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          p {
+            font-style: oblique;
+          }
+        }
+
+        &_categoryId {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          p {
+            font-style: oblique;
+          }
+
+          select {
+            padding: 5px;
+            border-radius: 4px;
+          }
+        }
+      }
+
+      button {
+        width: calc(100% - 20%);
+        cursor: pointer;
+        border: 1px solid rgb(197, 197, 197);
+        padding: 4px;
+        border-radius: 7px;
+        transition: all 0.15s ease-in;
+        font-size: 16px;
+        margin-top: 20px;
+
+        &:active {
+          transform: translateY(-2px);
+          background-color: green;
+          color: white;
+        }
+      }
+    }
+  }
+}
