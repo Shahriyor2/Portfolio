@@ -4,7 +4,7 @@ import classes from "./products.module.scss";
 import background from "/public/assets/about-us/background.jpg";
 import { useState } from "react";
 
-const Products = ({ categoriesData }) => {
+const Products = ({ categoriesData, records }) => {
   const [isActive, setIsActive] = useState(false);
 
   const handleClassOnChange = () => {
@@ -44,6 +44,20 @@ const Products = ({ categoriesData }) => {
 
         <div className={classes["products-container"]}>
           <h1>Products</h1>
+
+          <div className={classes["products-container__box"]}>
+            {records.map((item) => {
+              return (
+                <div
+                  className={classes["products-container__box_cart"]}
+                  key={item.id}
+                >
+                  <img src={item.image_path} alt="image" />
+                  <p>{item.description}</p>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

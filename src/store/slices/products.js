@@ -21,7 +21,7 @@ export const productsSlice = createSlice({
   },
 });
 
-export const { updatcCategorieseData, updateProduts } = productsSlice.actions;
+export const { updatCategorieseData, updateProduts } = productsSlice.actions;
 
 export function getProductsCategories() {
   return async function (dispatch) {
@@ -29,7 +29,7 @@ export function getProductsCategories() {
       const {
         data: { data },
       } = await axios.get("http://10.251.4.131/kurbonoff/getCategories");
-      dispatch(updatcCategorieseData(data));
+      dispatch(updatCategorieseData(data));
     } catch (error) {
       console.error(error);
     }

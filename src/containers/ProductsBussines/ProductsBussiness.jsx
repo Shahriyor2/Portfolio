@@ -21,7 +21,7 @@ const ProductsBussiness = () => {
 
   return (
     <>
-      <Products categoriesData={categoriesData} />
+      <Products categoriesData={categoriesData} records={records} />
     </>
   );
 };
