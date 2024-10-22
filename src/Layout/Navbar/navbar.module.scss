@@ -1,57 +1,39 @@
 .navbar-container {
   width: 100%;
   height: 70px;
-  padding: 0 30px 0 30px;
+  padding: 0 30px;
   position: sticky;
-  z-index: 9;
   top: 0;
-  // background-color: rgba(255, 255, 255, 1);
-  // backdrop-filter: grayscale(30%);
+  z-index: 9;
   background-color: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(18px);
-
   mix-blend-mode: multiply;
+  transition: background-color 0.3s ease-in-out;
 
   .content {
     max-width: 1240px;
     margin: 0 auto;
     display: flex;
+    justify-content: space-between; /* Для выравнивания логотипа и навигации */
     align-items: center;
   }
+
   img {
-    padding: 5px 0px;
-    margin-right: 150px;
+    padding: 5px 0;
   }
-
-  // ul {
-  //   li {
-  //     transition: all 0.2s ease-in-out;
-
-  //     &:hover {
-  //       color: rgb(81, 167, 167);
-  //     }
-  //     &:nth-child(1) :hover {
-  //       color: rgb(81, 167, 167);
-  //     }
-  //     &:nth-child(2) :hover {
-  //       color: rgb(81, 167, 167);
-  //     }
-  //     &:nth-child(3) :hover {
-  //       color: rgb(81, 167, 167);
-  //     }
-  //   }
-  // }
 
   &__navigation {
     ul {
       display: flex;
+      align-items: center;
+      gap: 30px; /* Добавляем промежуток между элементами */
       margin-top: 10px;
 
       li {
-        padding: 20px;
         list-style-type: none;
         cursor: pointer;
         transition: color 0.3s ease-in-out;
+        padding: 10px 15px; /* Уменьшаем padding для элементов */
 
         &:hover {
           color: #3aadda;
@@ -62,7 +44,70 @@
 }
 
 .navbar-sticky {
-  -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
-  -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
   box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+}
+
+// Адаптивные стили
+@media (max-width: 1024px) {
+  .navbar-container {
+    .content {
+      padding: 0 20px;
+    }
+
+    &__navigation {
+      ul {
+        gap: 20px;
+
+        li {
+          padding: 10px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    height: 60px;
+    padding: 0 15px;
+
+    img {
+      width: 90px;
+      height: auto;
+    }
+
+    &__navigation {
+      ul {
+        gap: 15px;
+
+        li {
+          padding: 8px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-container {
+    height: 60px;
+    padding: 0 10px;
+
+    img {
+      width: 70px;
+      height: auto;
+    }
+
+    &__navigation {
+      ul {
+        gap: 10px;
+
+        li {
+          padding: 6px;
+          font-size: 12px;
+        }
+      }
+    }
+  }
 }

@@ -1,7 +1,6 @@
 .ourvision-container {
   height: 500px;
   position: relative;
-  //   overflow: hidden;
 
   .content {
     width: 100%;
@@ -19,10 +18,10 @@
       top: -85%;
       text-align: center;
       color: white;
-      padding: 100px;
+      padding: 70px; // Уменьшили padding для более аккуратного текста
 
       h2 {
-        font-size: 19px;
+        font-size: 24px;
         font-weight: 500;
         line-height: 1.3em;
       }
@@ -30,6 +29,83 @@
       p {
         font-size: 18px;
         line-height: 1.5em;
+      }
+    }
+  }
+}
+
+// Медиа-запросы для адаптивности
+
+@media (max-width: 1024px) {
+  .ourvision-container {
+    height: 400px;
+
+    .content {
+      img {
+        height: 400px;
+      }
+
+      &__info-text {
+        top: -80%;
+        padding: 50px; // Уменьшили padding для более узких экранов
+
+        h2 {
+          font-size: 22px;
+        }
+
+        p {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .ourvision-container {
+    height: 350px;
+
+    .content {
+      img {
+        height: 350px;
+      }
+
+      &__info-text {
+        top: -75%;
+        padding: 30px;
+
+        h2 {
+          font-size: 20px;
+        }
+
+        p {
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .ourvision-container {
+    height: 300px;
+
+    .content {
+      img {
+        height: 300px;
+      }
+
+      &__info-text {
+        top: -70%;
+        padding: 20px; // Еще меньше отступов для мобильных экранов
+
+        h2 {
+          font-size: 18px;
+        }
+
+        p {
+          font-size: 14px;
+        }
       }
     }
   }

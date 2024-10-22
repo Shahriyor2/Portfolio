@@ -1,6 +1,5 @@
 .someinfo-container {
   background-color: #f1f1f1;
-
   padding: 55px 30px;
 
   .content {
@@ -10,9 +9,12 @@
     display: flex;
     gap: 50px;
     padding: 20px;
+    align-items: center;
 
     img {
       object-fit: cover;
+      max-width: 100%; // Устанавливаем максимальную ширину для адаптивности
+      height: auto; // Делаем высоту авто для пропорциональности
     }
 
     &__right-section {
@@ -29,6 +31,79 @@
       p {
         line-height: 1.5em;
         font-size: 16px;
+      }
+    }
+  }
+}
+
+// Медиа-запросы для адаптивности
+
+@media (max-width: 1024px) {
+  .someinfo-container {
+    padding: 40px 20px;
+
+    .content {
+      gap: 30px;
+      flex-direction: column; // Перестраиваем на столбец для узких экранов
+
+      img {
+        width: 100%; // Изображение занимает всю ширину
+      }
+
+      &__right-section {
+        text-align: center; // Центрируем текст для мобильных устройств
+        h1 {
+          font-size: 24px; // Уменьшаем размер заголовка
+        }
+
+        p {
+          font-size: 15px; // Немного уменьшаем текст
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .someinfo-container {
+    padding: 30px 15px;
+
+    .content {
+      padding: 15px;
+      gap: 20px;
+
+      &__right-section {
+        h1 {
+          font-size: 22px; // Еще больше уменьшаем заголовок
+        }
+
+        p {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .someinfo-container {
+    padding: 20px 10px;
+
+    .content {
+      padding: 10px;
+
+      img {
+        width: 100%; // Изображение растягивается на всю ширину экрана
+      }
+
+      &__right-section {
+        h1 {
+          font-size: 20px; // Заголовок для совсем маленьких экранов
+        }
+
+        p {
+          font-size: 13px; // Уменьшаем текст для компактности
+        }
       }
     }
   }

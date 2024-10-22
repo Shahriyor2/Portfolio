@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom";
+import FooterBs from "../containers/FooterBussiness/FoterBs";
 import ClientInfo from "./ClientInfo/ClientInfo";
-import Footer from "./Footer/Footer";
-import ToUppButton from "./ToUppButton/ToUppButton";
 import Navbar from "./Navbar/Navbar";
+import ToUppButton from "./ToUppButton/ToUppButton";
 
 const Layout = () => {
   return (
@@ -11,7 +11,7 @@ const Layout = () => {
       <ClientInfo />
       <Navbar />
       <Outlet />
-      <Footer />
+      <FooterBs />
     </>
   );
 };

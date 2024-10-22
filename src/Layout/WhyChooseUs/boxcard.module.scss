@@ -1,10 +1,13 @@
 .boxcard-container {
   padding-bottom: 20px;
+
   .block-content {
     padding: 0 20px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 30px;
+
     .card {
       width: 280px;
       text-align: center;
@@ -12,10 +15,7 @@
       transition: box-shadow 0.2s ease-in-out;
 
       &:hover {
-        -webkit-box-shadow: 4px 4px 46px 0px rgba(34, 60, 80, 0.2);
-        -moz-box-shadow: 4px 4px 46px 0px rgba(34, 60, 80, 0.2);
-        box-shadow: 4px 4px 46px 0px rgba(34, 60, 80, 0.2);
-
+        box-shadow: 4px 4px 46px rgba(34, 60, 80, 0.2);
         border-radius: 3px;
 
         hr {
@@ -48,9 +48,23 @@
   }
 }
 
+@media (max-width: 900px) {
+  .block-content {
+    justify-content: center;
+  }
+
+  .card {
+    width: 200px;
+  }
+}
+
 @media (max-width: 600px) {
   .block-content {
-    width: 550px;
-    overflow: auto;
+    padding: 0 10px;
+    justify-content: center;
+  }
+
+  .card {
+    width: 90%;
   }
 }

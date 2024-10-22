@@ -11,40 +11,41 @@ const AboutUs = () => {
       <div className={classes["bread-background"]}>
         <img height={205} src={background} alt="" />
         <div className={classes["bread-background__title"]}>
-          <Link toq="/">
+          <Link to="/">
             <Home />
-            <h1>Home</h1>
+            <h1>Главная</h1>
           </Link>
           <span>
             <Slash />
           </span>
-          <h1>About us</h1>
+          <h1>О нас</h1>
         </div>
       </div>
 
-      <div className={classes["aboutUs__title"]}>About us</div>
+      <div className={classes["aboutUs__title"]}>О нас</div>
 
       <div className={classes["content"]}>
-        {/* right section */}
+        {/* правая секция */}
         <div className={classes["content__left-section"]}>
-          <h1>PVSYS Energy</h1>
+          <h1>PVSYS Энергия</h1>
           <p>
-            For over a decade, Pvsys Energy has been a trusted provider in the
-            solar energy sector, specializing in the production of solar panels,
-            hybrid inverters, LifePO4 batteries, and mounting brackets. Our
-            integrated solar storage solutions, featuring a built-in hybrid
-            inverter, mppt controller, and LifePO4 battery equipped with a
-            Battery Management System, are designed for use in areas without
-            power. They also offer significant energy cost savings for our
-            customers. Understanding that each customer has unique needs, we
-            provide personalized solar system customization. We are committed to
-            finding the perfect fit for everyone.
+            Более десяти лет PVSYS Энергия является надежным поставщиком в
+            солнечном энергетическом секторе, специализируясь на производстве
+            солнечных панелей, гибридных инверторов, батарей LifePO4 и крепежных
+            элементов. Наши интегрированные решения для солнечных батарей,
+            оснащенные встроенным гибридным инвертором, контроллером MPPT и
+            батареей LifePO4 с системой управления батареями, предназначены для
+            использования в районах без электроэнергии. Они также обеспечивают
+            значительную экономию затрат на энергию для наших клиентов. Понимая,
+            что у каждого клиента уникальные потребности, мы предоставляем
+            индивидуальную настройку солнечной системы. Мы стремимся найти
+            идеальное решение для каждого.
           </p>
         </div>
 
-        {/* left section */}
+        {/* левая секция */}
         <div className={classes["content__right-section"]}>
-          <img width={"max-content"} height={305} src={videoImg} alt="video" />
+          <img width={"max-content"} height={305} src={videoImg} alt="видео" />
           <div className={classes["content__right-section_pulse"]}>
             <Play />
           </div>

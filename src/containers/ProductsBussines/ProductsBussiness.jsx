@@ -11,8 +11,9 @@ const ProductsBussiness = () => {
 
   const categoriesData = useSelector(({ products }) => products.categoriesData);
   const records = useSelector(({ products }) => products.records);
+  const total_count = useSelector(({ products }) => products.total_count);
 
-  console.log("records: ", records);
+  //   console.log(total_count);
 
   useEffect(() => {
     dispatch(getProductsCategories());
@@ -21,7 +22,11 @@ const ProductsBussiness = () => {
 
   return (
     <>
-      <Products categoriesData={categoriesData} records={records} />
+      <Products
+        categoriesData={categoriesData}
+        records={records}
+        total_count={total_count}
+      />
     </>
   );
 };

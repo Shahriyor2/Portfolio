@@ -5,15 +5,15 @@ const WhyChooseUs = () => {
   return (
     <>
       <div className={classes["whychooseus-container"]}>
-        {/* заголовок */}
+        {/* Заголовок */}
         <div className={classes["whychooseus-content"]}>
-          <h1>WHY DO YOU CHOOSE US</h1>
+          <h1>ПОЧЕМУ ВЫБИРАЮТ НАС</h1>
 
           <div className={classes["whychooseus-content__hr"]}>
             <hr />
           </div>
 
-          <p>Professional;Experienced;Enthusiastic;Reliable</p>
+          <p>Профессионализм; Опыт; Энтузиазм; Надежность</p>
         </div>
       </div>
       <BoxCard />

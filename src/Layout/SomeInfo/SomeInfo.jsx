@@ -13,15 +13,16 @@ const SomeInfo = () => {
 
           {/* первый текст */}
           <p>
-            PVSYS ENERGY GROUP LIMITED is the professional manufacturer of solar
-            panel,solar storage system in the market for more than 13 years.
+            PVSYS ENERGY GROUP LIMITED — это профессиональный производитель
+            солнечных панелей и систем накопления энергии с более чем 13-летним
+            опытом на рынке.
           </p>
           <br />
           {/* второй текст */}
           <p>
-            We always seem Quality is our life, without good quality,we can not
-            go any further. We blieve with our effort,we will make the world
-            better.
+            Мы всегда придерживаемся мнения, что качество — это наша жизнь. Без
+            хорошего качества мы не сможем двигаться дальше. Мы верим, что
+            благодаря нашим усилиям мир станет лучше.
           </p>
         </div>
       </div>

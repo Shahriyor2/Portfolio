@@ -10,6 +10,8 @@ const AdminPanel = ({
   handleCreateCategory,
   handleCreateProduct,
   handleDateOnChange,
+  handleImageChange,
+  handlePdfChange,
 }) => {
   const mapOption = categoryIdData?.map((item) => {
     return (
@@ -97,6 +99,18 @@ const AdminPanel = ({
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 popperPlacement="bottom"
               />
+            </div>
+            <div className={classes["createProduct__content_image"]}>
+              <p>Выберите изображение: </p>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+              />
+            </div>
+            <div className={classes["createProduct__content_image"]}>
+              <p>Выберите файл PDF: </p>
+              <input type="file" accept=".pdf" onChange={handlePdfChange} />
             </div>
           </div>
           <button onClick={() => handleCreateProduct(value)}>

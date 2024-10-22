@@ -6,21 +6,21 @@ import third from "/public/assets/SolarSystem/third.webp";
 const mapCartObj = [
   {
     image: firstImg,
-    text: "We save costs for our clients.",
+    text: "Мы экономим расходы для наших клиентов.",
     backText:
-      "We are offering the whole complete solar system to our global customers to save their total cost.",
+      "Мы предлагаем полную солнечную систему для наших глобальных клиентов, чтобы снизить их общие затраты.",
   },
   {
     image: second,
-    text: "We save costs for our clients.",
+    text: "Мы экономим расходы для наших клиентов.",
     backText:
-      "With our professional design of the solar system, clients can install the system quickly and easily..",
+      "С нашим профессиональным дизайном солнечной системы клиенты могут установить систему быстро и легко.",
   },
   {
     image: third,
-    text: "We save costs for our clients.",
+    text: "Мы экономим расходы для наших клиентов.",
     backText:
-      "Our system is convenient for clients to maintain and we will provide the best after-sales service.",
+      "Наша система удобна для обслуживания клиентов, и мы предоставим лучший сервис после продажи.",
   },
 ];
 
@@ -37,7 +37,7 @@ const RotateCarts = () => {
                     width={318}
                     height={245}
                     src={item.image}
-                    alt={`Image ${index}`}
+                    alt={`Изображение ${index}`}
                   />
                   <p>{item.text}</p>
                 </div>

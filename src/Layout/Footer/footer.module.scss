@@ -13,63 +13,36 @@
       border-bottom: 1px solid #3b3b3b;
       padding-bottom: 30px;
 
-      &__products {
+      &__products,
+      &__contacts {
         max-width: 270px;
-        &_title {
-          padding-bottom: 10px;
-          border-bottom: 1px solid #3b3b3b;
-          margin-bottom: 10px;
+      }
 
-          h1 {
-            line-height: 1.5em;
-            font-size: 17px;
-          }
-        }
+      &__products_title,
+      &__contacts_title {
+        padding-bottom: 10px;
+        border-bottom: 1px solid #3b3b3b;
+        margin-bottom: 10px;
 
-        &_list {
-          ul {
-            li {
-              padding: 10px 7px;
-              border-bottom: 1px dashed #3b3b3b;
-
-              &:hover {
-                color: #3aadda;
-              }
-            }
-          }
+        h1 {
+          line-height: 1.5em;
+          font-size: 17px;
         }
       }
 
-      &__contacts {
-        max-width: 270px;
-        &_title {
-          padding-bottom: 10px;
-          border-bottom: 1px solid #3b3b3b;
-          margin-bottom: 10px;
+      &__products_list ul li,
+      &__contacts_list ul li {
+        padding: 10px 7px;
+        border-bottom: 1px dashed #3b3b3b;
+        display: flex;
+        align-items: center;
 
-          h1 {
-            font-size: 17px;
-            line-height: 1.5em;
-          }
+        &:hover {
+          color: #3aadda;
         }
 
-        &_list {
-          ul {
-            li {
-              display: flex;
-
-              padding: 10px 7px;
-              border-bottom: 1px dashed #3b3b3b;
-
-              & span:hover {
-                color: #3aadda;
-              }
-
-              svg {
-                margin-right: 7px;
-              }
-            }
-          }
+        svg {
+          margin-right: 7px;
         }
       }
     }
@@ -77,6 +50,16 @@
     .afterAll {
       padding: 30px 10px;
       text-align: center;
+    }
+  }
+}
+
+// Адаптивные стили
+@media (max-width: 768px) {
+  .content {
+    .overlay {
+      flex-direction: column; // Переводим в колонку для узких экранов
+      gap: 30px; // Уменьшаем расстояние между секциями
     }
   }
 }

@@ -31,20 +31,19 @@ const Navbar = () => {
       }`}
     >
       <div className={classes["content"]}>
-        <img width={111} height={60} src={logo} alt="logo" />
+        <img width={111} height={60} src={logo} alt="логотип" />
 
         {/* навигация */}
         <div className={classes["navbar-container__navigation"]}>
-          {/* <MenuList /> */}
           <ul>
             <Link to="/">
-              <li>Home</li>
+              <li>Главная</li>
             </Link>
             <Link to="/about-us">
-              <li>About us</li>
+              <li>О нас</li>
             </Link>
             <Link to="/products">
-              <li>Products</li>
+              <li>Продукты</li>
             </Link>
           </ul>
         </div>

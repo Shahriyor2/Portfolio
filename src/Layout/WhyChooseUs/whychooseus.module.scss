@@ -14,6 +14,7 @@
 
     h1 {
       font-weight: 600;
+      font-size: 32px; // Базовый размер заголовка
     }
 
     &__hr {
@@ -37,6 +38,57 @@
       font-size: 16px;
       color: #0000008a;
       line-height: 24px;
+    }
+  }
+}
+
+// Медиа-запросы для адаптивности
+
+@media (max-width: 900px) {
+  .whychooseus-container {
+    padding-top: 50px;
+
+    .whychooseus-content {
+      font-size: 22px;
+      line-height: 34px;
+
+      h1 {
+        font-size: 28px; // Уменьшаем заголовок для экранов меньше 900px
+      }
+
+      &__hr {
+        width: 180px; // Уменьшаем ширину линии
+      }
+
+      p {
+        font-size: 14px; // Уменьшаем размер текста
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .whychooseus-container {
+    padding-top: 30px;
+
+    .whychooseus-content {
+      font-size: 18px; // Уменьшаем общий размер текста
+      line-height: 30px;
+
+      h1 {
+        font-size: 24px; // Заголовок становится еще меньше на малых экранах
+        text-align: center; // Центрируем заголовок
+      }
+
+      &__hr {
+        width: 150px; // Уменьшаем ширину разделителя
+      }
+
+      p {
+        font-size: 14px;
+        line-height: 22px; // Корректируем высоту строки
+        text-align: center; // Центрируем текст
+      }
     }
   }
 }

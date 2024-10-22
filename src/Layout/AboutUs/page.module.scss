@@ -54,13 +54,13 @@
 
   .content {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     margin-top: 55px;
     margin-bottom: 50px;
     position: relative;
 
     &__left-section {
-      width: 370px;
+      width: 45%; // Делаем ширину 45%, чтобы секции выровнялись
       min-height: 480px;
       text-align: left;
       padding: 40px 50px 30px 50px;
@@ -80,22 +80,21 @@
     }
 
     &__right-section {
+      width: 45%; // Устанавливаем аналогичную ширину
       border-radius: 5px;
-      width: 543px;
       height: 290px;
       position: relative;
-      top: 90px;
-      left: -25px;
+      top: 0; // Убираем смещение
+      left: 0;
       z-index: 3;
-      //   flex: 0 0 58.333333%;
 
       -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
       -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
       box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
 
       img {
-        width: 543px;
-        height: 290px;
+        width: 100%; // Ширина изображения будет 100% от контейнера
+        height: auto;
         border-radius: 5px;
       }
 
@@ -108,9 +107,10 @@
         border-radius: 50%;
         box-shadow: 0 0 0 #4fc1e9;
         animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
-        position: relative;
-        top: -50px;
-        left: 223px;
+        position: absolute; // Делаем элемент абсолютным
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); // Центрируем его
         z-index: 9;
         background: #4fc1e9;
 
@@ -125,6 +125,20 @@
             box-shadow: 0 0 0 45px transparent;
           }
         }
+      }
+    }
+  }
+
+  // Адаптивные стили для мобильных устройств
+  @media (max-width: 768px) {
+    .content {
+      flex-direction: column; // Секции будут в столбик на маленьких экранах
+      align-items: center;
+
+      &__left-section,
+      &__right-section {
+        width: 90%; // Уменьшаем ширину секций
+        margin-bottom: 30px;
       }
     }
   }

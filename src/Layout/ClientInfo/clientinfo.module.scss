@@ -2,42 +2,25 @@
   background: #f1f1f1;
 
   .content {
-    height: 24px;
     max-width: 1240px;
     margin: 0 auto;
-
     display: flex;
     align-items: center;
+    // justify-content: space-between;
     gap: 20px;
-
-    padding: 5px 30px;
+    padding: 10px 30px;
+    flex-wrap: wrap; // Позволяет перенос элементов на следующую строку при необходимости
   }
 
-  .email {
-    font-size: 14px;
-    a {
-      display: flex;
-      gap: 7px;
-      opacity: 0.7;
-
-      &:hover {
-        color: #3aadda;
-      }
-
-      svg {
-        width: 18px;
-        height: 18px;
-      }
-    }
-  }
-
+  .email,
   .phone {
     font-size: 14px;
     a {
       display: flex;
       gap: 7px;
       opacity: 0.7;
-
+      align-items: center;
+      white-space: nowrap; // Отключаем перенос текста
       &:hover {
         color: #3aadda;
       }
@@ -59,6 +42,66 @@
         width: 18px;
         height: 18px;
       }
+    }
+  }
+}
+
+// Медиа-запросы для адаптивности
+@media (max-width: 1024px) {
+  .content {
+    justify-content: center; // Центрируем контент при меньших экранах
+    gap: 15px;
+  }
+
+  .email,
+  .phone {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: 10px 20px;
+    gap: 10px;
+    justify-content: center; // Центрируем контент
+  }
+
+  .email,
+  .phone {
+    font-size: 12px;
+  }
+
+  .social {
+    gap: 10px;
+
+    a svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: 10px 15px;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: nowrap; // На маленьких экранах элементы не переносятся
+  }
+
+  .email,
+  .phone {
+    font-size: 12px;
+    max-width: 50%; // Ограничиваем ширину для элементов
+    text-align: center; // Центрируем текст
+  }
+
+  .social {
+    gap: 8px;
+
+    a svg {
+      width: 14px;
+      height: 14px;
     }
   }
 }

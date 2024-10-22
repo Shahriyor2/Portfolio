@@ -137,6 +137,15 @@
           }
         }
       }
+
+      &__total-count {
+        text-align: end;
+        opacity: 0.7;
+
+        span {
+          font-weight: bold;
+        }
+      }
     }
   }
 }

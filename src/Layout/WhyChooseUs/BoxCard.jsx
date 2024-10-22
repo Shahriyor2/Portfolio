@@ -8,36 +8,36 @@ const BoxCard = () => {
   const boxesCard = [
     {
       img: sun,
-      title: "About company",
-      text: "Professional manufacturer of solar panel and solar system in the market for more than 13 years",
+      title: "О компании",
+      text: "Профессиональный производитель солнечных панелей и систем на рынке более 13 лет.",
     },
     {
       img: sunBattеry,
-      title: "We are engaged in",
-      text: "Production of solar panel,solar system,and solar system integration.",
+      title: "Чем мы занимаемся",
+      text: "Производство солнечных панелей, систем и их интеграция.",
     },
     {
       img: mill,
-      title: "Hybrid energy",
-      text: "Our solar system can be designed and operated with hybrid energy,such as grid power,generator and wind turbine.",
+      title: "Гибридная энергия",
+      text: "Наши системы могут работать с гибридной энергией, такой как сетевое электричество, генераторы и ветряные турбины.",
     },
     {
       img: world,
-      title: "After-sale service",
-      text: "Our solar products and solar system are convenient for customers to maintain and provide customers with the best after-sales service.",
+      title: "Послепродажное обслуживание",
+      text: "Наши продукты легко обслуживаются, и мы предоставляем лучший послепродажный сервис.",
     },
   ];
 
   return (
     <section className={classes["boxcard-container"]}>
-      {/* block */}
+      {/* блок */}
       <div className={classes["block-content"]}>
         {boxesCard.map((item, key) => {
           return (
             <div key={key} className={classes["card"]}>
-              {/* card-img */}
+              {/* изображение карточки */}
               <div className={classes["card__img"]}>
-                <img width={75} height={75} src={item.img} alt="чтото" />
+                <img width={75} height={75} src={item.img} alt="изображение" />
 
                 <h2>{item.title}</h2>
                 <hr />

@@ -7,7 +7,7 @@ const SolarSystem = () => {
       <div className={classes["solarsystem-container"]}>
         {/* заголовок */}
         <div className={classes["content"]}>
-          <h1>SOLAR SYSTEM</h1>
+          <h1>СОЛНЕЧНАЯ СИСТЕМА</h1>
 
           <div className={classes["content__hr"]}>
             <hr />
@@ -15,9 +15,9 @@ const SolarSystem = () => {
 
           {/* <div className={classes["solarsystem-content__text"]}> */}
           <p>
-            We made our system in modularity, it is easy for our customers to
-            maintain the system and it is easy for us to offer the best after
-            sales service.
+            Мы создали нашу систему модульной, что позволяет нашим клиентам
+            легко обслуживать систему и нам легко предоставлять лучший сервис
+            после продажи.
           </p>
           {/* </div> */}
         </div>

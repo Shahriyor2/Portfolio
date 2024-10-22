@@ -1,7 +1,8 @@
 import classes from "./footer.module.scss";
 import { Mail, Map, Phone } from "lucide-react";
 
-const Footer = () => {
+const Footer = ({ categoriesData }) => {
+  console.log(categoriesData);
   return (
     <footer className={classes["footer-container"]}>
       <div className={classes["content"]}>
@@ -16,11 +17,13 @@ const Footer = () => {
             {/* содержимое товаров */}
             <div className={classes["overlay__products_list"]}>
               <ul>
-                <li>Salar Off Grid Inverter</li>
-                <li>Salar Battery</li>
-                <li>Salar Controller</li>
-                <li>Salar Mounting Bracket</li>
-                <li>Salar Cable</li>
+                {categoriesData?.map((item) => {
+                  return (
+                    <li style={{ cursor: "pointer" }} key={item.id}>
+                      {item.name}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           </div>

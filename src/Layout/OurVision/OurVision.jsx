@@ -5,23 +5,19 @@ const OurVision = () => {
   return (
     <div className={classes["ourvision-container"]}>
       <div className={classes["content"]}>
-        <img
-          width={"100%"}
-          height={500}
-          src={stickyBackground}
-          alt="stickyBacground"
-        />
+        <img width={"100%"} height={500} src={stickyBackground} alt="фон" />
         <div className={classes["content__info-text"]}>
-          <h2>Our Vision</h2>
+          <h2>Наша миссия</h2>
           <br />
           <p>
-            Offer the realiable solar products with best price to our clients.
+            Предлагать надежные солнечные продукты по лучшим ценам для наших
+            клиентов.
           </p>
           <br />
           <p>
-            Offer the realiable solar products with best price to our clients.
-            br Offer the realiable solar products with best price to our
-            clients.
+            Предлагать надежные солнечные продукты по лучшим ценам для наших
+            клиентов. Предлагать надежные солнечные продукты по лучшим ценам для
+            наших клиентов.
           </p>
         </div>
       </div>

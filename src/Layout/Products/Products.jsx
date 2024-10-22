@@ -1,14 +1,22 @@
+import { useDispatch } from "react-redux";
 import { Home, Slash } from "lucide-react";
 import { Link } from "react-router-dom";
 import classes from "./products.module.scss";
 import background from "/public/assets/about-us/background.jpg";
 import { useState } from "react";
+import { getProductsByCategory } from "../../store/slices/products";
 
-const Products = ({ categoriesData, records }) => {
+const Products = ({ categoriesData, records, total_count }) => {
   const [isActive, setIsActive] = useState(false);
+  const dispatch = useDispatch(); // Для использования dispatch
 
   const handleClassOnChange = () => {
     setIsActive(!isActive);
+  };
+
+  const handleCategoryClick = (categoryId) => {
+    // Диспатчим запрос по категории при клике
+    dispatch(getProductsByCategory(categoryId));
   };
 
   return (
@@ -37,7 +45,12 @@ const Products = ({ categoriesData, records }) => {
           <h1 onClick={handleClassOnChange}>Products</h1>
           {categoriesData?.map((item) => (
             <ul key={item.id}>
-              <li>{item.name}</li>
+              <li
+                onClick={() => handleCategoryClick(item.id)} // Обработчик клика
+                style={{ cursor: "pointer" }}
+              >
+                {item.name}
+              </li>
             </ul>
           ))}
         </div>
@@ -48,16 +61,20 @@ const Products = ({ categoriesData, records }) => {
           <div className={classes["products-container__box"]}>
             {records.map((item) => {
               return (
-                <div
-                  className={classes["products-container__box_cart"]}
+                <Link
+                  to={`/products/${item.id}`}
                   key={item.id}
+                  className={classes["products-container__box_cart"]}
                 >
                   <img src={item.image_path} alt="image" />
                   <p>{item.description}</p>
-                </div>
+                </Link>
               );
             })}
           </div>
+          <p className={classes["products-container__total-count"]}>
+            Общее количество продуктов: <span>{total_count}</span>
+          </p>
         </div>
       </div>
     </section>
