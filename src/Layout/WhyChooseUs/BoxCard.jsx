@@ -3,6 +3,7 @@ import mill from "/public/assets/boxcard/мельница.webp";
 import world from "/public/assets/boxcard/мир.webp";
 import sunBattеry from "/public/assets/boxcard/солн.батареи.webp";
 import sun from "/public/assets/boxcard/солнце.webp";
+import { motion } from "framer-motion";
 
 const BoxCard = () => {
   const boxesCard = [
@@ -29,26 +30,41 @@ const BoxCard = () => {
   ];
 
   return (
-    <section className={classes["boxcard-container"]}>
-      {/* блок */}
-      <div className={classes["block-content"]}>
-        {boxesCard.map((item, key) => {
-          return (
-            <div key={key} className={classes["card"]}>
-              {/* изображение карточки */}
-              <div className={classes["card__img"]}>
-                <img width={75} height={75} src={item.img} alt="изображение" />
+    <motion.div
+      key={"firstTab"}
+      className="box"
+      initial={{ opacity: 0, y: 100 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ ease: "linear", duration: 0.3, delay: 0.4 }}
+      animate="visible"
+    >
+      <section className={classes["boxcard-container"]}>
+        {/* блок */}
+        <div className={classes["block-content"]}>
+          {boxesCard.map((item, key) => {
+            return (
+              <div key={key} className={classes["card"]}>
+                {/* изображение карточки */}
+                <div className={classes["card__img"]}>
+                  <img
+                    width={75}
+                    height={75}
+                    src={item.img}
+                    alt="изображение"
+                  />
 
-                <h2>{item.title}</h2>
-                <hr />
+                  <h2>{item.title}</h2>
+                  <hr />
+                </div>
+
+                <p>{item.text}</p>
               </div>
-
-              <p>{item.text}</p>
-            </div>
-          );
-        })}
-      </div>
-    </section>
+            );
+          })}
+        </div>
+      </section>
+    </motion.div>
   );
 };
 

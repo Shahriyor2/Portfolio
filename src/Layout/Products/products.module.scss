@@ -49,7 +49,7 @@
     gap: 40px;
 
     .productsCategories-container {
-      border: 1px solid black;
+      // border: 1px solid black;
       padding: 20px;
 
       h1 {
@@ -87,7 +87,7 @@
       width: 100%;
       flex: 1;
       padding: 20px;
-      border: 1px solid black;
+      // border: 1px solid black;
 
       h1 {
         text-transform: uppercase;
@@ -105,7 +105,6 @@
         // justify-content: start;
         &_cart {
           width: 150px;
-          //   min-height: 255px;
           height: auto;
           border: 1px solid #f1f1f1;
           text-align: center;
@@ -145,6 +144,30 @@
         span {
           font-weight: bold;
         }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .container .overlay .products-container {
+    &__box {
+      flex-wrap: nowrap;
+      overflow-x: scroll;
+      gap: 10px;
+      padding: 10px;
+
+      &_cart {
+        min-width: 150px;
+      }
+
+      &::-webkit-scrollbar {
+        height: 8px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #ccc;
+        border-radius: 4px;
       }
     }
   }

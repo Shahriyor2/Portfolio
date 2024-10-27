@@ -49,8 +49,6 @@ export function getProducts() {
 
       const { data } = response.data;
 
-      console.log(data.records);
-
       dispatch(
         products({
           records: data.records,

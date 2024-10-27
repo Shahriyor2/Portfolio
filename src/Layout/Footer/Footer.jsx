@@ -1,8 +1,14 @@
-import classes from "./footer.module.scss";
 import { Mail, Map, Phone } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import classes from "./footer.module.scss";
 
 const Footer = ({ categoriesData }) => {
-  console.log(categoriesData);
+  const navigate = useNavigate();
+
+  const handleCategoryClick = (categoryId) => {
+    navigate("/products");
+  };
+
   return (
     <footer className={classes["footer-container"]}>
       <div className={classes["content"]}>
@@ -19,7 +25,11 @@ const Footer = ({ categoriesData }) => {
               <ul>
                 {categoriesData?.map((item) => {
                   return (
-                    <li style={{ cursor: "pointer" }} key={item.id}>
+                    <li
+                      onClick={() => handleCategoryClick(item?.id)}
+                      style={{ cursor: "pointer" }}
+                      key={item?.id}
+                    >
                       {item.name}
                     </li>
                   );

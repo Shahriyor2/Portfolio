@@ -12,6 +12,7 @@ const AdminPanel = ({
   handleDateOnChange,
   handleImageChange,
   handlePdfChange,
+  handleDeleteProduct,
 }) => {
   const mapOption = categoryIdData?.map((item) => {
     return (
@@ -115,6 +116,29 @@ const AdminPanel = ({
           </div>
           <button onClick={() => handleCreateProduct(value)}>
             Создать продукт
+          </button>
+        </div>
+
+        <div
+          style={{ border: "1px solid red" }}
+          className={classes["createCatageries"]}
+        >
+          <h1 style={{ color: "red" }}>Удаление продукта</h1>
+          <div className={classes["createCatageries__content"]}>
+            {/* name-category */}
+            <div className={classes["createCatageries__content_name"]}>
+              <p>Введите id-продукта:</p>
+              <input
+                type="number"
+                name="id"
+                value={value?.id}
+                placeholder="id-продукта"
+                onChange={handleCategoryOnChange}
+              />
+            </div>
+          </div>
+          <button onClick={() => handleDeleteProduct(value)}>
+            Создать категорию
           </button>
         </div>
       </div>

@@ -35,8 +35,6 @@ const ProductDetails = () => {
     return <p>Продукт не найден</p>;
   }
 
-  console.log("product: ", product);
-
   return (
     <section className={classes["container"]}>
       {/* показ навигации */}

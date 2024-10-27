@@ -13,8 +13,6 @@ const ProductsBussiness = () => {
   const records = useSelector(({ products }) => products.records);
   const total_count = useSelector(({ products }) => products.total_count);
 
-  //   console.log(total_count);
-
   useEffect(() => {
     dispatch(getProductsCategories());
     dispatch(getProducts());

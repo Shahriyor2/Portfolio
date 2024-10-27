@@ -31,7 +31,9 @@ const Navbar = () => {
       }`}
     >
       <div className={classes["content"]}>
-        <img width={111} height={60} src={logo} alt="логотип" />
+        <Link to="/">
+          <img width={111} height={60} src={logo} alt="логотип" />
+        </Link>
 
         {/* навигация */}
         <div className={classes["navbar-container__navigation"]}>

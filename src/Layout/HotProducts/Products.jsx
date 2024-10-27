@@ -1,3 +1,4 @@
+import NothingToHave from "../NothingToHave";
 import classes from "./products.module.scss";
 import first from "/public/assets/hotProducts/1-ая.webp";
 import second from "/public/assets/hotProducts/2-ая.webp";
@@ -59,16 +60,25 @@ const Products = () => {
   return (
     <div className={classes["products-container"]}>
       <div className={classes["content"]}>
-        {productsObj.map((item, key) => {
-          return (
-            <div className={classes["card"]} key={key}>
-              <img width={"100%"} height={205} src={item.image} alt="картина" />
-              <a href="#">
-                <p>{item.text}</p>
-              </a>
-            </div>
-          );
-        })}
+        {!productsObj || productsObj.length === 0 ? (
+          <NothingToHave />
+        ) : (
+          productsObj.slice(0, 11)?.map((item, key) => {
+            return (
+              <div className={classes["card"]} key={key}>
+                <img
+                  width={"100%"}
+                  height={205}
+                  src={item.image}
+                  alt="картина"
+                />
+                <a href="#">
+                  <p>{item.text}</p>
+                </a>
+              </div>
+            );
+          })
+        )}
       </div>
     </div>
   );

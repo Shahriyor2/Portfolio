@@ -11,14 +11,17 @@ import Layout from "./Layout";
 import AboutUs from "./Layout/AboutUs/AboutUs";
 import HotProducts from "./Layout/HotProducts/HotProducts";
 import OurVision from "./Layout/OurVision/OurVision";
+import ProductDetails from "./Layout/ProductsDetail/ProductDetails";
 import SolarSystem from "./Layout/SolarSystem/SolarSystem";
 import SomeInfo from "./Layout/SomeInfo/SomeInfo";
 import WhyChooseUs from "./Layout/WhyChooseUs/WhyChooseUs";
-import ProductDetails from "./Layout/ProductsDetail/ProductDetails";
+import Carousel from "./Layout/Carousel/Carousel";
+import PageNotFound from "./Layout/404";
 
 function MainLayout() {
   return (
     <>
+      <Carousel />
       <WhyChooseUs />
       <SomeInfo />
       <HotProducts />
@@ -68,6 +71,7 @@ export function App() {
         <Route path="/products" element={<Layout />}>
           <Route path="/products/:id" element={<ProductDetails />} />
         </Route>
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Router>
   );

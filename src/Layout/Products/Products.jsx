@@ -5,17 +5,17 @@ import classes from "./products.module.scss";
 import background from "/public/assets/about-us/background.jpg";
 import { useState } from "react";
 import { getProductsByCategory } from "../../store/slices/products";
+import NothingToHave from "../NothingToHave";
 
 const Products = ({ categoriesData, records, total_count }) => {
   const [isActive, setIsActive] = useState(false);
-  const dispatch = useDispatch(); // Для использования dispatch
+  const dispatch = useDispatch();
 
   const handleClassOnChange = () => {
     setIsActive(!isActive);
   };
 
   const handleCategoryClick = (categoryId) => {
-    // Диспатчим запрос по категории при клике
     dispatch(getProductsByCategory(categoryId));
   };
 
@@ -32,7 +32,9 @@ const Products = ({ categoriesData, records, total_count }) => {
           <span>
             <Slash />
           </span>
-          <h1>Products</h1>
+          <Link to="/products">
+            <h1>Products</h1>
+          </Link>
         </div>
       </div>
 
@@ -46,7 +48,7 @@ const Products = ({ categoriesData, records, total_count }) => {
           {categoriesData?.map((item) => (
             <ul key={item.id}>
               <li
-                onClick={() => handleCategoryClick(item.id)} // Обработчик клика
+                onClick={() => handleCategoryClick(item.id)}
                 style={{ cursor: "pointer" }}
               >
                 {item.name}
@@ -59,21 +61,30 @@ const Products = ({ categoriesData, records, total_count }) => {
           <h1>Products</h1>
 
           <div className={classes["products-container__box"]}>
-            {records.map((item) => {
-              return (
-                <Link
-                  to={`/products/${item.id}`}
-                  key={item.id}
-                  className={classes["products-container__box_cart"]}
-                >
-                  <img src={item.image_path} alt="image" />
-                  <p>{item.description}</p>
-                </Link>
-              );
-            })}
+            {!records || records?.length === 0 ? (
+              <p style={{ fontStyle: "italic" }}>
+                К сожалению 😕 не удалось получить товары. Попробуйте повторить
+                попытку позже.
+              </p>
+            ) : (
+              records.map((item) => {
+                return (
+                  <Link
+                    to={`/products/${item.id}`}
+                    key={item.id}
+                    className={classes["products-container__box_cart"]}
+                  >
+                    <img src={item.image_path} alt="image" />
+                    <p>{item.description}</p>
+                  </Link>
+                );
+              })
+            )}
           </div>
           <p className={classes["products-container__total-count"]}>
-            Общее количество продуктов: <span>{total_count}</span>
+            {!records || records?.length === 0
+              ? null
+              : `Общее количество продуктов: ${(<span>{total_count}</span>)}`}
           </p>
         </div>
       </div>
