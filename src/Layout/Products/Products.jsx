@@ -1,11 +1,10 @@
-import { useDispatch } from "react-redux";
 import { Home, Slash } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { getProductsByCategory } from "../../store/slices/products";
 import classes from "./products.module.scss";
 import background from "/public/assets/about-us/background.jpg";
-import { useState } from "react";
-import { getProductsByCategory } from "../../store/slices/products";
-import NothingToHave from "../NothingToHave";
 
 const Products = ({ categoriesData, records, total_count }) => {
   const [isActive, setIsActive] = useState(false);
@@ -18,6 +17,10 @@ const Products = ({ categoriesData, records, total_count }) => {
   const handleCategoryClick = (categoryId) => {
     dispatch(getProductsByCategory(categoryId));
   };
+
+  useEffect(() => {
+    document.title = "Продукты";
+  }, []);
 
   return (
     <section className={classes["container"]}>
@@ -44,17 +47,22 @@ const Products = ({ categoriesData, records, total_count }) => {
             isActive ? classes["hide-ul"] : ""
           }`}
         >
-          <h1 onClick={handleClassOnChange}>Products</h1>
-          {categoriesData?.map((item) => (
-            <ul key={item.id}>
-              <li
-                onClick={() => handleCategoryClick(item.id)}
-                style={{ cursor: "pointer" }}
-              >
-                {item.name}
-              </li>
-            </ul>
-          ))}
+          <div>
+            <h1 onClick={handleClassOnChange}>Products</h1>
+          </div>
+
+          <div className={classes["ul-block"]}>
+            {categoriesData?.map((item) => (
+              <ul key={item.id}>
+                <li
+                  onClick={() => handleCategoryClick(item.id)}
+                  style={{ cursor: "pointer" }}
+                >
+                  {item.name}
+                </li>
+              </ul>
+            ))}
+          </div>
         </div>
 
         <div className={classes["products-container"]}>
@@ -75,6 +83,7 @@ const Products = ({ categoriesData, records, total_count }) => {
                     className={classes["products-container__box_cart"]}
                   >
                     <img src={item.image_path} alt="image" />
+
                     <p>{item.description}</p>
                   </Link>
                 );
@@ -82,9 +91,11 @@ const Products = ({ categoriesData, records, total_count }) => {
             )}
           </div>
           <p className={classes["products-container__total-count"]}>
-            {!records || records?.length === 0
-              ? null
-              : `Общее количество продуктов: ${(<span>{total_count}</span>)}`}
+            {!records || records?.length === 0 ? null : (
+              <>
+                Общее количество продуктов: <span>{total_count}</span>
+              </>
+            )}
           </p>
         </div>
       </div>

@@ -3,8 +3,13 @@ import background from "/public/assets/about-us/background.jpg";
 import { Home, Play, Slash } from "lucide-react";
 import videoImg from "/public/assets/about-us/video-img.webp";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const AboutUs = () => {
+  useEffect(() => {
+    document.title = "О нас";
+  }, []);
+
   return (
     <section className={classes["container"]}>
       {/* показ навигации */}

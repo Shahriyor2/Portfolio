@@ -19,6 +19,9 @@ import Carousel from "./Layout/Carousel/Carousel";
 import PageNotFound from "./Layout/404";
 
 function MainLayout() {
+  useEffect(() => {
+    document.title = "Главная";
+  }, []);
   return (
     <>
       <Carousel />
@@ -27,7 +30,6 @@ function MainLayout() {
       <HotProducts />
       <OurVision />
       <SolarSystem />
-      {/* <MoreProducts /> */}
     </>
   );
 }

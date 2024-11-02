@@ -5,16 +5,17 @@
   position: sticky;
   top: 0;
   z-index: 9;
-  background-color: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(18px);
-  mix-blend-mode: multiply;
+  // background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 1);
+  // backdrop-filter: blur(18px);
+  // mix-blend-mode: multiply;
   transition: background-color 0.3s ease-in-out;
 
   .content {
     max-width: 1240px;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between; /* Для выравнивания логотипа и навигации */
+    justify-content: space-between;
     align-items: center;
   }
 
@@ -26,14 +27,14 @@
     ul {
       display: flex;
       align-items: center;
-      gap: 30px; /* Добавляем промежуток между элементами */
+      gap: 30px;
       margin-top: 10px;
 
       li {
         list-style-type: none;
         cursor: pointer;
         transition: color 0.3s ease-in-out;
-        padding: 10px 15px; /* Уменьшаем padding для элементов */
+        padding: 10px 15px;
 
         &:hover {
           color: #3aadda;
@@ -47,7 +48,6 @@
   box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
 }
 
-// Адаптивные стили
 @media (max-width: 1024px) {
   .navbar-container {
     .content {

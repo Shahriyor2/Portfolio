@@ -35,6 +35,27 @@ const ProductDetails = () => {
     return <p>Продукт не найден</p>;
   }
 
+  const handleDownloadPDF = async (image_path) => {
+    try {
+      const response = await axios.get(
+        `http://10.251.4.131/kurbonoff/upload?image_path=${image_path}`,
+        {
+          responseType: "blob",
+        }
+      );
+
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", "filename.pdf");
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <section className={classes["container"]}>
       {/* показ навигации */}
@@ -85,24 +106,6 @@ const ProductDetails = () => {
                     officia eos dicta at in itaque deleniti rerum consectetur
                     quaerat voluptatum voluptate ipsa.
                   </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Minima vitae unde quis accusantium quae esse amet aliquam,
-                    officia eos dicta at in itaque deleniti rerum consectetur
-                    quaerat voluptatum voluptate ipsa.
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Minima vitae unde quis accusantium quae esse amet aliquam,
-                    officia eos dicta at in itaque deleniti rerum consectetur
-                    quaerat voluptatum voluptate ipsa.
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Minima vitae unde quis accusantium quae esse amet aliquam,
-                    officia eos dicta at in itaque deleniti rerum consectetur
-                    quaerat voluptatum voluptate ipsa.
-                  </p>
                 </>
               );
             })}
@@ -111,17 +114,19 @@ const ProductDetails = () => {
           <div className={classes["product-container-info__right-section"]}>
             {product.map((item) => (
               <>
+                {console.log(item)}
                 <h1 style={{ textTransform: "uppercase" }} key={item.id}>
                   {item?.title}
                 </h1>
-
                 <p>{item?.description}</p>
+                <button
+                  onClick={() => handleDownloadPDF(item.image_path)}
+                  className={classes["product-container-info__btn"]}
+                >
+                  PDF DOWNLOAD
+                </button>
               </>
             ))}
-
-            <button className={classes["product-container-info__btn"]}>
-              PDF DOWNLOAD
-            </button>
           </div>
         </div>
       </section>

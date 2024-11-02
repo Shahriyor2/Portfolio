@@ -150,6 +150,27 @@
 }
 
 @media only screen and (max-width: 414px) {
+  .overlay {
+    display: flex;
+    flex-direction: column;
+    gap: 20px !important;
+  }
+
+  .ul-block {
+    display: flex;
+    font-size: 12px;
+    align-items: center;
+    overflow-y: auto;
+    gap: 12px;
+    ul {
+      display: flex;
+    }
+  }
+
+  .products-container__total-count {
+    margin-top: 13px;
+  }
+
   .container .overlay .products-container {
     &__box {
       flex-wrap: nowrap;
@@ -158,7 +179,12 @@
       padding: 10px;
 
       &_cart {
-        min-width: 150px;
+        min-width: 120px;
+        img {
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+        }
       }
 
       &::-webkit-scrollbar {

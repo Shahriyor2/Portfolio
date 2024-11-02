@@ -17,7 +17,7 @@ const SolarSystem = () => {
         <div className={classes["solarsystem-container"]}>
           {/* заголовок */}
           <div className={classes["content"]}>
-            <h1>СОЛНЕЧНАЯ СИСТЕМА</h1>
+            <h1 style={{ textAlign: "center" }}>СОЛНЕЧНАЯ СИСТЕМА</h1>
 
             <div className={classes["content__hr"]}>
               <hr />

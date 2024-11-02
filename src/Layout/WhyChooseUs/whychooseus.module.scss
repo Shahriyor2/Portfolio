@@ -6,7 +6,9 @@
     font-size: 25px;
     line-height: 37.5px;
     color: #0000008a;
-    width: max-content;
+    width: 90%; // Ограничиваем ширину контента
+    max-width: 600px; // Устанавливаем максимальную ширину
+    text-align: center; // Центрируем текст
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -14,22 +16,20 @@
 
     h1 {
       font-weight: 600;
-      font-size: 32px; // Базовый размер заголовка
+      font-size: 32px;
+      word-wrap: break-word; // Разрешаем перенос слов
     }
 
     &__hr {
       width: 200px;
-      border: 0.5px solid #0000008a;
-      opacity: 0.5;
       height: 1px;
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-top: 20px;
-      margin-bottom: 20px;
+      margin: 20px 0;
 
       hr {
-        width: calc(100% - 65%);
+        width: 100%;
         border: 2px solid #3aadda;
       }
     }
@@ -38,6 +38,8 @@
       font-size: 16px;
       color: #0000008a;
       line-height: 24px;
+      text-align: center; // Центрируем текст
+      overflow-wrap: break-word; // Перенос слов
     }
   }
 }
@@ -51,17 +53,18 @@
     .whychooseus-content {
       font-size: 22px;
       line-height: 34px;
+      max-width: 90%;
 
       h1 {
-        font-size: 28px; // Уменьшаем заголовок для экранов меньше 900px
+        font-size: 28px;
       }
 
       &__hr {
-        width: 180px; // Уменьшаем ширину линии
+        width: 180px;
       }
 
       p {
-        font-size: 14px; // Уменьшаем размер текста
+        font-size: 14px;
       }
     }
   }
@@ -72,22 +75,21 @@
     padding-top: 30px;
 
     .whychooseus-content {
-      font-size: 18px; // Уменьшаем общий размер текста
+      font-size: 18px;
       line-height: 30px;
 
       h1 {
-        font-size: 24px; // Заголовок становится еще меньше на малых экранах
-        text-align: center; // Центрируем заголовок
+        font-size: 24px;
+        text-align: center;
       }
 
       &__hr {
-        width: 150px; // Уменьшаем ширину разделителя
+        width: 150px;
       }
 
       p {
         font-size: 14px;
-        line-height: 22px; // Корректируем высоту строки
-        text-align: center; // Центрируем текст
+        line-height: 22px;
       }
     }
   }
