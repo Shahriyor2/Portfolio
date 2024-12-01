@@ -13,11 +13,16 @@ const AdminPanel = ({
   handleImageChange,
   handlePdfChange,
   handleDeleteProduct,
+  deleteCategoryValue,
+  handleDeleteCategoryOnChange,
+  handleDeleteProductOnChange,
+  handleDeleteCategory,
+  deleteProductValue,
 }) => {
   const mapOption = categoryIdData?.map((item) => {
     return (
       <option value={item.id} key={item.id}>
-        {item.name}
+        {item?.name}
       </option>
     );
   });
@@ -60,13 +65,14 @@ const AdminPanel = ({
                 value={value?.productTitle}
                 placeholder="заголовок-продукта"
                 onChange={handleCategoryOnChange}
+                className={classes["createProduct__content_name_firstInput"]}
               />
             </div>
 
             {/* description-product */}
             <div className={classes["createProduct__content_description"]}>
               <p>Введите описание-продукта:</p>
-              <input
+              <textarea
                 type="text"
                 name="description"
                 value={value?.description}
@@ -105,13 +111,14 @@ const AdminPanel = ({
               <p>Выберите изображение: </p>
               <input
                 type="file"
-                accept="image/*"
+                accept="изображение/*"
                 onChange={handleImageChange}
               />
             </div>
             <div className={classes["createProduct__content_image"]}>
               <p>Выберите файл PDF: </p>
-              <input type="file" accept=".pdf" onChange={handlePdfChange} />
+              {/* <input type="file" accept=".pdf" onChange={handlePdfChange} /> */}
+              <input type="file" onChange={handlePdfChange} />
             </div>
           </div>
           <button onClick={() => handleCreateProduct(value)}>
@@ -119,6 +126,37 @@ const AdminPanel = ({
           </button>
         </div>
 
+        {/* Удалить категорию */}
+        <div
+          style={{ border: "1px solid red" }}
+          className={classes["createCatageries"]}
+        >
+          <h1 style={{ color: "red" }}>Удаление категории</h1>
+          <div className={classes["createCatageries__content"]}>
+            {/* name-category */}
+            <div className={classes["createCatageries__content_name"]}>
+              <p>Введите категории для удаления:</p>
+
+              <select
+                name="id"
+                value={deleteCategoryValue?.id || ""}
+                onChange={handleDeleteCategoryOnChange}
+              >
+                {/* {mapOption} */}
+                <option value="1">1</option>
+                <option value="2">2</option>
+              </select>
+            </div>
+          </div>
+          <button
+            className={classes["delate-btn"]}
+            onClick={() => handleDeleteCategory(deleteCategoryValue)}
+          >
+            Удалить категории
+          </button>
+        </div>
+
+        {/* Удаление продукта */}
         <div
           style={{ border: "1px solid red" }}
           className={classes["createCatageries"]}
@@ -127,18 +165,20 @@ const AdminPanel = ({
           <div className={classes["createCatageries__content"]}>
             {/* name-category */}
             <div className={classes["createCatageries__content_name"]}>
-              <p>Введите id-продукта:</p>
+              <p>Введите ID-продукта для удаления:</p>
               <input
-                type="number"
                 name="id"
-                value={value?.id}
+                value={deleteProductValue?.id}
                 placeholder="id-продукта"
-                onChange={handleCategoryOnChange}
+                onChange={handleDeleteProductOnChange}
               />
             </div>
           </div>
-          <button onClick={() => handleDeleteProduct(value)}>
-            Создать категорию
+          <button
+            className={classes["delate-btn"]}
+            onClick={() => handleDeleteProduct(deleteProductValue)}
+          >
+            Удалить продукт
           </button>
         </div>
       </div>

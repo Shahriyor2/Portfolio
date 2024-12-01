@@ -1,4 +1,4 @@
-import { Home, Slash } from "lucide-react";
+import { Home, Minus, Slash } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -47,8 +47,9 @@ const Products = ({ categoriesData, records, total_count }) => {
             isActive ? classes["hide-ul"] : ""
           }`}
         >
-          <div>
-            <h1 onClick={handleClassOnChange}>Products</h1>
+          <div className={classes['minus-block']} style={{ display: "flex", gap: 176 }}>
+            <h1>Products</h1>
+            <Minus onClick={handleClassOnChange} />
           </div>
 
           <div className={classes["ul-block"]}>
@@ -82,8 +83,11 @@ const Products = ({ categoriesData, records, total_count }) => {
                     key={item.id}
                     className={classes["products-container__box_cart"]}
                   >
-                    <img src={item.image_path} alt="image" />
-
+                    {/* <img src={item.image_path} alt="image" /> */}
+                    <img
+                      src={`/home/server/sse/${item.image_path}`}
+                      alt="image"
+                    />
                     <p>{item.description}</p>
                   </Link>
                 );

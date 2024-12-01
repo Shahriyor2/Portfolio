@@ -14,6 +14,16 @@ const AdminPanelBusiness = () => {
   });
 
   const [categoryIdData, setCategoryIdData] = useState([]);
+
+  // useState для удаления
+  const [deleteCategoryValue, setDeleteCategoryValue] = useState({
+    id: null,
+  });
+
+  const [deleteProductValue, setDeleteProductValue] = useState({
+    id: null,
+  });
+
   const [imageFile, setImageFile] = useState(null);
   const [pdfFile, setPdfFile] = useState(null);
 
@@ -49,6 +59,19 @@ const AdminPanelBusiness = () => {
     setPdfFile(e.target.files[0]);
   };
 
+  // изменение useState категории
+  const handleDeleteCategoryOnChange = (e) => {
+    const { name, value } = e.target;
+    setDeleteCategoryValue((prev) => ({ ...prev, [name]: value }));
+  };
+
+  // изменение useState продукта-удаления
+  const handleDeleteProductOnChange = (e) => {
+    const { name, value } = e.target;
+    setDeleteProductValue((prev) => ({ ...prev, [name]: value }));
+  };
+
+  // создание категории
   const handleCreateCategory = (params) => {
     if (params.name === "" || !params) {
       alert("Данные категории пустые!");
@@ -64,6 +87,7 @@ const AdminPanelBusiness = () => {
     }
   };
 
+  // создание продукта
   const handleCreateProduct = async (params) => {
     const { productTitle, description, category_id, created_at } = params;
 
@@ -102,6 +126,19 @@ const AdminPanelBusiness = () => {
     }
   };
 
+  // удаление категории
+  const handleDeleteCategory = async (params) => {
+    console.log(params);
+    try {
+      await axios.delete(
+        `http://10.251.4.131/kurbonoff/deleteCategory?id=${params.id}`
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //удаление продукта
   const handleDeleteProduct = async (params) => {
     try {
       await axios.delete(
@@ -124,6 +161,13 @@ const AdminPanelBusiness = () => {
     imageFile,
     pdfFile,
     handleDeleteProduct,
+    deleteCategoryValue,
+    handleDeleteCategoryOnChange,
+    //
+    deleteProductValue,
+    handleDeleteProductOnChange,
+    //
+    handleDeleteCategory,
   };
 
   return (

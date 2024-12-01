@@ -84,8 +84,9 @@
       flex-direction: column;
       align-items: center;
       margin-top: 30px;
-      border: 2px solid #dddddd;
-      padding: 30px 10px 15px;
+      // border: 2px solid #dddddd;
+      border: 2px solid green;
+      padding: 30px 30px 15px;
       margin-bottom: 40px;
 
       &__content {
@@ -110,9 +111,14 @@
         }
 
         &_name {
+          width: 100%;
           display: flex;
           align-items: center;
           gap: 10px;
+
+          input {
+            width: 100%;
+          }
 
           p {
             font-style: oblique;
@@ -123,6 +129,12 @@
           display: flex;
           align-items: center;
           gap: 10px;
+          width: 100%;
+
+          textarea {
+            width: 100%;
+            height: 150px;
+          }
 
           p {
             font-style: oblique;
@@ -174,5 +186,25 @@
         }
       }
     }
+  }
+}
+
+.delate-btn {
+  &:hover {
+    transform: translateY(-2px);
+    background-color: red !important;
+    color: white;
+  }
+
+  &:active {
+    transform: translateY(-2px);
+    background-color: red;
+    color: white;
+  }
+}
+
+.createProduct__content_name_firstInput {
+  input {
+    width: 100% !important;
   }
 }

@@ -58,6 +58,10 @@
         cursor: pointer;
       }
 
+      svg {
+        cursor: pointer;
+      }
+
       ul {
         padding-top: 6px;
         transition: opacity 0.3s ease-in-out;
@@ -149,7 +153,7 @@
   }
 }
 
-@media only screen and (max-width: 414px) {
+@media only screen and (max-width: 480px) {
   .overlay {
     display: flex;
     flex-direction: column;
@@ -196,5 +200,15 @@
         border-radius: 4px;
       }
     }
+  }
+
+  .minus-block {
+    svg {
+      display: none;
+    }
+  }
+
+  .products-container {
+    padding: 0 !important;
   }
 }

@@ -29,9 +29,15 @@ const ClientInfo = () => {
           <a href="#">
             <Twitter />
           </a>
-          <a href="#">
+          <a
+            href="https://www.instagram.com/solar_system.tj/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Instagram />
           </a>
+
+          {/* <a href="#"></a> */}
         </div>
       </div>
     </section>
