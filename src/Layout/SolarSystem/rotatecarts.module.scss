@@ -2,17 +2,30 @@
   perspective: 1000px;
   padding-bottom: 70px;
 
+  @media (max-width: 480px) {
+    padding-left: 10px;
+  }
+
   .content {
     display: flex;
     gap: 30px;
     justify-content: center;
     flex-wrap: wrap;
+
+    @media (max-width: 480px) {
+      flex-wrap: nowrap !important; // Запрет переноса строк на мобильных
+      overflow-x: scroll; // Горизонтальная прокрутка
+      -webkit-overflow-scrolling: touch; // Плавная прокрутка на iOS
+      gap: 15px; // Уменьшение отступов между карточками для мобильных
+      justify-content: flex-start;
+    }
   }
 
   .cart {
     width: 318px;
     height: 245px;
     position: relative;
+    flex-shrink: 0; // Предотвращает сжатие карточек на мобильных
 
     .cart-inner {
       width: 100%;
@@ -73,5 +86,13 @@
       bottom: 105px;
       width: 100%;
     }
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    width: 100%;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
   }
 }

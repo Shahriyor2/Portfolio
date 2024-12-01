@@ -33,6 +33,11 @@
         line-height: 1.5em;
         font-size: 24px;
         color: white;
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: #3aadda;
+        }
       }
 
       span {
@@ -49,7 +54,6 @@
     gap: 40px;
 
     .productsCategories-container {
-      // border: 1px solid black;
       padding: 20px;
 
       h1 {
@@ -91,7 +95,6 @@
       width: 100%;
       flex: 1;
       padding: 20px;
-      // border: 1px solid black;
 
       h1 {
         text-transform: uppercase;
@@ -106,11 +109,10 @@
         gap: 30px;
         width: 100%;
         flex-wrap: wrap;
-        // justify-content: start;
         &_cart {
           width: 150px;
           height: auto;
-          border: 1px solid #f1f1f1;
+          border: 1px solid #e7e7e7;
           text-align: center;
           border-radius: 4px;
           cursor: pointer;
