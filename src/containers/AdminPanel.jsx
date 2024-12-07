@@ -94,11 +94,12 @@ const AdminPanelBusiness = () => {
     const formData = new FormData();
     formData.append("title", productTitle);
     formData.append("description", description);
-    formData.append("image_path", imageFile);
-    formData.append("pdf_path", pdfFile);
+    formData.append("image", imageFile);
+    formData.append("pdf", pdfFile);
     formData.append("category_id", category_id);
     formData.append("created_at", created_at);
 
+    // Проверка на пустые поля
     if (
       !productTitle ||
       !description ||
@@ -121,6 +122,20 @@ const AdminPanelBusiness = () => {
           },
         }
       );
+
+      setValue({
+        id: null,
+        name: "",
+        productId: "",
+        productTitle: "",
+        description: "",
+        category_id: 1,
+        created_at: "",
+      });
+      setImageFile(null);
+      setPdfFile(null);
+
+      alert("Продукт успешно создан!");
     } catch (error) {
       console.error("Ошибка при создании продукта:", error);
     }
@@ -128,7 +143,6 @@ const AdminPanelBusiness = () => {
 
   // удаление категории
   const handleDeleteCategory = async (params) => {
-    console.log(params);
     try {
       await axios.delete(
         `http://10.251.4.131/kurbonoff/deleteCategory?id=${params.id}`

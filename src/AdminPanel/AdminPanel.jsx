@@ -111,7 +111,7 @@ const AdminPanel = ({
               <p>Выберите изображение: </p>
               <input
                 type="file"
-                accept="изображение/*"
+                accept="image/*"
                 onChange={handleImageChange}
               />
             </div>
@@ -142,9 +142,7 @@ const AdminPanel = ({
                 value={deleteCategoryValue?.id || ""}
                 onChange={handleDeleteCategoryOnChange}
               >
-                {/* {mapOption} */}
-                <option value="1">1</option>
-                <option value="2">2</option>
+                {mapOption}
               </select>
             </div>
           </div>

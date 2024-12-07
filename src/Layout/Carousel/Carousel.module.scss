@@ -48,6 +48,14 @@
   .text p {
     font-size: 12px;
   }
+
+  .text {
+    max-width: 320px;
+  }
+
+  .slide img {
+    height: 260px;
+  }
 }
 
 @media (max-width: 400px) {

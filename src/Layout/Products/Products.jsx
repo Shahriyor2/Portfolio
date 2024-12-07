@@ -1,8 +1,11 @@
-import { Home, Minus, Slash } from "lucide-react";
+import { Home, Minus, Plus, Slash } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { getProductsByCategory } from "../../store/slices/products";
+import {
+  getProducts,
+  getProductsByCategory,
+} from "../../store/slices/products";
 import classes from "./products.module.scss";
 import background from "/public/assets/about-us/background.jpg";
 
@@ -47,9 +50,16 @@ const Products = ({ categoriesData, records, total_count }) => {
             isActive ? classes["hide-ul"] : ""
           }`}
         >
-          <div className={classes['minus-block']} style={{ display: "flex", gap: 176 }}>
-            <h1>Products</h1>
-            <Minus onClick={handleClassOnChange} />
+          <div
+            className={classes["minus-block"]}
+            style={{ display: "flex", gap: 176 }}
+          >
+            <h1 onClick={() => dispatch(getProducts())}>Products</h1>
+            {isActive ? (
+              <Minus onClick={handleClassOnChange} />
+            ) : (
+              <Plus onClick={handleClassOnChange} />
+            )}
           </div>
 
           <div className={classes["ul-block"]}>
@@ -83,12 +93,12 @@ const Products = ({ categoriesData, records, total_count }) => {
                     key={item.id}
                     className={classes["products-container__box_cart"]}
                   >
-                    {/* <img src={item.image_path} alt="image" /> */}
+                    {console.log(item)}
                     <img
-                      src={`/home/server/sse/${item.image_path}`}
+                      src={`http://10.251.4.131/kurbonoff/upload?filename=${item.image_path}`}
                       alt="image"
                     />
-                    <p>{item.description}</p>
+                    <p>{item?.title}</p>
                   </Link>
                 );
               })
