@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Mail, Phone, Twitter } from "lucide-react";
+import { Facebook, Instagram, Mail, Navigation, Phone } from "lucide-react";
 import classes from "./clientinfo.module.scss";
 
 const ClientInfo = () => {
@@ -17,7 +17,7 @@ const ClientInfo = () => {
         <div className={classes["phone"]}>
           <a href="#">
             <Phone />
-            <p>+992 900 000 000</p>
+            <p>+992 90 000 0596</p>
           </a>
         </div>
 
@@ -26,8 +26,8 @@ const ClientInfo = () => {
           <a href="#">
             <Facebook />
           </a>
-          <a href="#">
-            <Twitter />
+          <a href="https://t.me/Muhammad_Kurbonov" target="_blank">
+            <Navigation />
           </a>
           <a
             href="https://www.instagram.com/solar_system.tj/"
@@ -36,8 +36,6 @@ const ClientInfo = () => {
           >
             <Instagram />
           </a>
-
-          {/* <a href="#"></a> */}
         </div>
       </div>
     </section>
