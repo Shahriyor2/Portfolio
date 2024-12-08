@@ -49,7 +49,9 @@ const Footer = ({ categoriesData }) => {
             <div className={classes["overlay__contacts_list"]}>
               <ul>
                 <li>
-                  <Phone /> <span> +86 17821615616 </span>
+                  <a href="tel:+992 90 000 0596">
+                    <Phone /> <span> +992 90 000 0596 </span>
+                  </a>
                 </li>
                 <li>
                   <Mail /> <span> sales@pv-system.net </span>

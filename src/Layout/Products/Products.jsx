@@ -8,8 +8,9 @@ import {
 } from "../../store/slices/products";
 import classes from "./products.module.scss";
 import background from "/public/assets/about-us/background.jpg";
+import ContentLoader from "react-content-loader";
 
-const Products = ({ categoriesData, records, total_count }) => {
+const Products = ({ categoriesData, records, total_count, isLoading }) => {
   const [isActive, setIsActive] = useState(false);
   const dispatch = useDispatch();
 
@@ -25,9 +26,27 @@ const Products = ({ categoriesData, records, total_count }) => {
     document.title = "Продукты";
   }, []);
 
+  const renderSkeletons = () => (
+    <div className={classes.skeletonContainer}>
+      {new Array(5).fill(null).map((_, index) => (
+        <ContentLoader
+          key={index}
+          speed={2}
+          width={198}
+          height={279}
+          viewBox="0 0 198 279"
+          backgroundColor="#f3f3f3"
+          foregroundColor="#ecebeb"
+        >
+          <rect x="27" y="22" rx="12" ry="12" width="198" height="279" />
+        </ContentLoader>
+      ))}
+    </div>
+  );
+
   return (
-    <section className={classes["container"]}>
-      {/* показ навигации */}
+    <section className={classes.container}>
+      {/* Показ навигации */}
       <div className={classes["bread-background"]}>
         <img height={205} src={background} alt="" />
         <div className={classes["bread-background__title"]}>
@@ -44,7 +63,7 @@ const Products = ({ categoriesData, records, total_count }) => {
         </div>
       </div>
 
-      <div className={classes["overlay"]}>
+      <div className={classes.overlay}>
         <div
           className={`${classes["productsCategories-container"]} ${
             isActive ? classes["hide-ul"] : ""
@@ -52,7 +71,7 @@ const Products = ({ categoriesData, records, total_count }) => {
         >
           <div
             className={classes["minus-block"]}
-            style={{ display: "flex", gap: 176 }}
+            style={{ display: "flex", gap: "176px" }}
           >
             <h1 onClick={() => dispatch(getProducts())}>Products</h1>
             {isActive ? (
@@ -80,32 +99,31 @@ const Products = ({ categoriesData, records, total_count }) => {
           <h1>Products</h1>
 
           <div className={classes["products-container__box"]}>
-            {!records || records?.length === 0 ? (
+            {isLoading ? (
+              renderSkeletons()
+            ) : !records || records?.length === 0 ? (
               <p style={{ fontStyle: "italic" }}>
                 К сожалению 😕 не удалось получить товары. Попробуйте повторить
                 попытку позже.
               </p>
             ) : (
-              records.map((item) => {
-                return (
-                  <Link
-                    to={`/products/${item.id}`}
-                    key={item.id}
-                    className={classes["products-container__box_cart"]}
-                  >
-                    {console.log(item)}
-                    <img
-                      src={`http://10.251.4.131/kurbonoff/upload?filename=${item.image_path}`}
-                      alt="image"
-                    />
-                    <p>{item?.title}</p>
-                  </Link>
-                );
-              })
+              records?.map((item) => (
+                <Link
+                  to={`/products/${item.id}`}
+                  key={item.id}
+                  className={classes["products-container__box_cart"]}
+                >
+                  <img
+                    src={`http://10.251.4.131/kurbonoff/upload?filename=${item.image_path}`}
+                    alt="image"
+                  />
+                  <p>{item?.title}</p>
+                </Link>
+              ))
             )}
           </div>
           <p className={classes["products-container__total-count"]}>
-            {!records || records?.length === 0 ? null : (
+            {records && records.length > 0 && (
               <>
                 Общее количество продуктов: <span>{total_count}</span>
               </>

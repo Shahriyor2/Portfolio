@@ -10,6 +10,7 @@ export const productsSlice = createSlice({
     perpage: 0,
     total_count: 0,
     total_pages: 0,
+    isLoading: false,
   },
   reducers: {
     categorieseData: (state, action) => {
@@ -22,10 +23,14 @@ export const productsSlice = createSlice({
       state.total_count = action.payload.total_count;
       state.total_pages = action.payload.total_pages;
     },
+    productsLoading: (state, action) => {
+      state.isLoading = action.payload;
+    },
   },
 });
 
-export const { categorieseData, products } = productsSlice.actions;
+export const { categorieseData, products, productsLoading } =
+  productsSlice.actions;
 
 export function getProductsCategories() {
   return async function (dispatch) {
@@ -43,6 +48,7 @@ export function getProductsCategories() {
 export function getProducts() {
   return async function (dispatch) {
     try {
+      dispatch(productsLoading(true));
       const response = await axios.get(
         "http://10.251.4.131/kurbonoff/getProducts"
       );
@@ -58,8 +64,11 @@ export function getProducts() {
           total_pages: data.total_pages,
         })
       );
+      dispatch(productsLoading(false));
     } catch (error) {
       console.error(error);
+    } finally {
+      dispatch(productsLoading(false));
     }
   };
 }

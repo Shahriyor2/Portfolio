@@ -1,12 +1,13 @@
 "use client";
-import throttle from "lodash.throttle";
 import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import classes from "./navbar.module.scss";
 import logo from "/public/assets/logo.jpg";
-import { Link } from "react-router-dom";
+import { throttle } from "lodash";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = throttle(() => {
@@ -24,6 +25,10 @@ const Navbar = () => {
     };
   }, []);
 
+  const getLinkClass = (path) => {
+    return location.pathname === path ? classes.active : "";
+  };
+
   return (
     <nav
       className={`${classes["navbar-container"]} ${
@@ -38,13 +43,13 @@ const Navbar = () => {
         {/* навигация */}
         <div className={classes["navbar-container__navigation"]}>
           <ul>
-            <Link to="/">
+            <Link to="/" className={getLinkClass("/")}>
               <li>Главная</li>
             </Link>
-            <Link to="/about-us">
+            <Link to="/about-us" className={getLinkClass("/about-us")}>
               <li>О нас</li>
             </Link>
-            <Link to="/products">
+            <Link to="/products" className={getLinkClass("/products")}>
               <li>Продукты</li>
             </Link>
           </ul>

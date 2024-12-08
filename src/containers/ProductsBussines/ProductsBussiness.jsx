@@ -12,11 +12,12 @@ const ProductsBussiness = () => {
   const categoriesData = useSelector(({ products }) => products.categoriesData);
   const records = useSelector(({ products }) => products.records);
   const total_count = useSelector(({ products }) => products.total_count);
+  const isLoading = useSelector(({ products }) => products.isLoading);
 
   useEffect(() => {
     dispatch(getProductsCategories());
     dispatch(getProducts());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
@@ -24,6 +25,7 @@ const ProductsBussiness = () => {
         categoriesData={categoriesData}
         records={records}
         total_count={total_count}
+        isLoading={isLoading}
       />
     </>
   );

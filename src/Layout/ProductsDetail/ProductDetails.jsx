@@ -69,10 +69,13 @@ const ProductDetails = () => {
           <span>
             <Slash />
           </span>
-          <h1>Products</h1>
-          <span>
-            <Slash />
-          </span>
+
+          <Link to="/products">
+            <h1>Products</h1>
+            <span>
+              <Slash />
+            </span>
+          </Link>
           {product.map((item) => (
             <h1 style={{ textTransform: "uppercase" }} key={item.id}>
               {item?.title}
@@ -80,7 +83,6 @@ const ProductDetails = () => {
           ))}
         </div>
       </div>
-
       <section className={classes["first-overlay"]}>
         <div className={classes["product-container-info"]}>
           <div className={classes["product-container-info__left-section"]}>
@@ -115,6 +117,15 @@ const ProductDetails = () => {
             ))}
           </div>
         </div>
+      </section>
+
+      <section>
+        {product.map((item) => (
+          <img
+            key={item.pdf_path}
+            src={`http://10.251.4.131/kurbonoff/upload?filename=${item.pdf_path}`}
+          />
+        ))}
       </section>
     </section>
   );

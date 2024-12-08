@@ -52,14 +52,23 @@
       text-align: center;
     }
   }
+
+  .overlay__contacts_list {
+    ul {
+      li {
+        a {
+          color: white;
+        }
+      }
+    }
+  }
 }
 
-// Адаптивные стили
 @media (max-width: 768px) {
   .content {
     .overlay {
-      flex-direction: column; // Переводим в колонку для узких экранов
-      gap: 30px; // Уменьшаем расстояние между секциями
+      flex-direction: column;
+      gap: 30px;
     }
   }
 }
