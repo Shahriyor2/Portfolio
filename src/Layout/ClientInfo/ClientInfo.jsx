@@ -1,15 +1,28 @@
-import { Facebook, Instagram, Mail, Navigation, Phone } from "lucide-react";
+import {
+  Facebook,
+  Instagram,
+  Mail,
+  Navigation,
+  Phone,
+  User,
+} from "lucide-react";
 import classes from "./clientinfo.module.scss";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import ModalAuth from "../Auth";
 
 const ClientInfo = () => {
+  const [modalIsOpen, setIsOpen] = useState(false);
+
   return (
     <section className={classes["clientinfo-container"]}>
       <div
         style={{
           display: "flex",
           justifyContent: "space-between",
-          alignItems: "flex-start",
+          alignItems: "center",
+          padding: "0 40px",
+          flexDirection: "column",
         }}
       >
         <div className={classes["content"]}>
@@ -46,10 +59,17 @@ const ClientInfo = () => {
             </a>
           </div>
         </div>
-        <Link to="/adPan" style={{ opacity: 0 }}>
-          test
-        </Link>
+        {/* <Link to="/adPan"> */}
+        <div className={classes["auth"]} onClick={() => setIsOpen(true)}>
+          <User />
+          Вход
+        </div>
+        {/* </Link> */}
       </div>
+
+      {modalIsOpen && (
+        <ModalAuth modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} />
+      )}
     </section>
   );
 };

@@ -163,6 +163,22 @@
   }
 }
 
+.skeletonContainer {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  overflow-x: auto;
+  padding: 10px 0;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .skeletonContainer {
+    gap: 12px;
+    padding: 10px;
+  }
+}
+
 @media only screen and (max-width: 480px) {
   .overlay {
     display: flex;
@@ -221,5 +237,10 @@
 
   .products-container {
     padding: 0 !important;
+  }
+
+  .skeletonContainer {
+    gap: 8px;
+    justify-content: flex-start;
   }
 }

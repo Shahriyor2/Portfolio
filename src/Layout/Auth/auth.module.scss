@@ -1,0 +1,45 @@
+.ReactModal__Overlay {
+  z-index: 999999 !important;
+}
+
+.login {
+  margin-bottom: 24px;
+
+  p {
+    margin-bottom: 4px;
+  }
+
+  input {
+    font-size: 16px;
+    padding: 6px;
+  }
+}
+
+.password {
+  margin-bottom: 12px;
+
+  p {
+    margin-bottom: 4px;
+  }
+
+  input {
+    font-size: 16px;
+    padding: 6px;
+  }
+}
+
+.btn-overlay {
+  text-align: center;
+
+  button {
+    border: 1px solid rgb(215, 215, 215);
+    padding: 8px;
+    border-radius: 6px;
+    text-align: center;
+    color: black;
+
+    &:active {
+      transform: translateY(2px);
+    }
+  }
+}
