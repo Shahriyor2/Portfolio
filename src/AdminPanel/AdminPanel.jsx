@@ -36,13 +36,25 @@ const AdminPanel = ({
   handleUpdatePdfChange,
   //
   handleCreateCategoryOnChange,
+  //
+  handleUpdateProductId,
 }) => {
   const categoryOptions = categoryIdData?.map((item) => ({
     label: item.name,
     value: item.id,
   }));
 
+  const productOptions = productData.records?.map((item) => ({
+    label: item.title,
+    value: item.id,
+  }));
+
   const productColumns = [
+    {
+      title: "Id",
+      dataIndex: "id",
+      key: "id",
+    },
     {
       title: "Название продукта",
       dataIndex: "title",
@@ -57,6 +69,7 @@ const AdminPanel = ({
         return category ? category.name : "N/A";
       },
     },
+
     {
       title: "Редактор",
       key: "action",
@@ -69,15 +82,17 @@ const AdminPanel = ({
           >
             Delete
           </Button>
-          {/* <Button onClick={() => handleUpdateProduct(record)} type="primary">
-            Edit
-          </Button> */}
         </>
       ),
     },
   ];
 
   const categoryColumns = [
+    {
+      title: "Id",
+      dataIndex: "id",
+      key: "id",
+    },
     {
       title: "Название категории",
       dataIndex: "name",
@@ -95,10 +110,6 @@ const AdminPanel = ({
       ),
     },
   ];
-
-  {
-    console.log("value: ", value);
-  }
 
   return (
     <div className={classes["admin-container"]}>
@@ -154,7 +165,6 @@ const AdminPanel = ({
           </Form.Item>
 
           <Form.Item label="Категория" name="category_id">
-            {console.log(value.category_id)}
             <Select
               value={value?.category_id}
               // onChange={handleCategoryOnChange}
@@ -182,7 +192,7 @@ const AdminPanel = ({
               className={classes["form-item-spacing"]}
             >
               <Upload
-                beforeUpload={handleImageChange}
+                onChange={handleImageChange}
                 showUploadList={false}
                 accept="image/*"
               >
@@ -195,7 +205,7 @@ const AdminPanel = ({
               className={classes["form-item-spacing"]}
             >
               <Upload
-                beforeUpload={handlePdfChange}
+                onChange={handlePdfChange}
                 showUploadList={false}
                 accept=".pdf"
               >
@@ -227,121 +237,6 @@ const AdminPanel = ({
         />
       </div>
 
-      {/* Deleting Category */}
-      {/* <div className={classes["deleteCategory"]}>
-        <h1 style={{ color: "red" }}>Delete Category</h1>
-        <Form
-          layout="inline"
-          onFinish={() => handleDeleteCategory(deleteCategoryValue)}
-        >
-          <Form.Item label="Select Category" name="id">
-            <Select
-              value={deleteCategoryValue?.id || ""}
-              onChange={handleDeleteCategoryOnChange}
-              options={categoryOptions}
-            />
-          </Form.Item>
-          <Button type="danger" htmlType="submit">
-            Delete Category
-          </Button>
-        </Form>
-      </div> */}
-
-      {/* Deleting Product */}
-      {/* <div className={classes["deleteProduct"]}>
-        <h1 style={{ color: "red" }}>Delete Product</h1>
-        <Form
-          layout="inline"
-          onFinish={() => handleDeleteProduct(deleteProductValue)}
-        >
-          <Form.Item label="Select Product" name="id">
-            <Select
-              value={deleteProductValue?.id || ""}
-              onChange={handleDeleteProductOnChange}
-            >
-              {productData?.records?.map((product) => (
-                <Select.Option key={product.id} value={product.id}>
-                  {product.title}
-                </Select.Option>
-              ))}
-            </Select>
-          </Form.Item>
-          <Button type="danger" htmlType="submit">
-            Delete Product
-          </Button>
-        </Form>
-      </div> */}
-
-      {/* Create Product */}
-      {/* <div
-        className={classes["editProduct"]}
-        style={{ paddingBottom: 80, marginTop: 40 }}
-      >
-        <h1>Создание продукта</h1>
-        <Form
-          onFinish={() => handleUpdateProduct(editProductValue)}
-          layout="vertical"
-        >
-          <Form.Item
-            label="Product Title"
-            name="productTitle"
-            initialValue={editProductValue?.productTitle}
-            rules={[{ required: true, message: "Please enter product title" }]}
-          >
-            <Input
-              placeholder="Enter product title"
-              onChange={handleUpdateProductOnChange}
-            />
-          </Form.Item>
-
-          <Form.Item
-            label="Product Description"
-            name="description"
-            initialValue={editProductValue?.description}
-            rules={[
-              { required: true, message: "Please enter product description" },
-            ]}
-          >
-            <Input.TextArea
-              placeholder="Enter product description"
-              onChange={handleUpdateProductOnChange}
-            />
-          </Form.Item>
-
-          <Form.Item label="Category" name="category_id">
-            <Select
-              value={editProductValue?.category_id}
-              onChange={handleUpdateProductOnChange}
-              options={categoryOptions}
-            />
-          </Form.Item>
-
-          <Form.Item label="Product Image">
-            <Upload
-              beforeUpload={handleUpdateImageChange}
-              showUploadList={false}
-              accept="image/*"
-            >
-              <Button icon={<UploadOutlined />}>Upload Image</Button>
-            </Upload>
-          </Form.Item>
-
-          <Form.Item label="PDF File">
-            <Upload
-              beforeUpload={handleUpdatePdfChange}
-              showUploadList={false}
-              accept=".pdf"
-            >
-              <Button icon={<UploadOutlined />}>Upload PDF</Button>
-            </Upload>
-          </Form.Item>
-
-          <Button type="primary" htmlType="submit">
-            Create Product
-          </Button>
-        </Form>
-      </div> */}
-
       {/* Edit Product */}
       <div
         className={classes["editProduct"]}
@@ -355,28 +250,44 @@ const AdminPanel = ({
           onFinish={() => handleUpdateProduct(editProductValue)}
           layout="vertical"
         >
+          <Form.Item label="Id" name="id">
+            <Select
+              value={editProductValue?.id}
+              onChange={handleUpdateProductId}
+              options={productOptions}
+              placeholder="Выберите продукт"
+            />
+          </Form.Item>
           <Form.Item
-            label="Product Title"
-            rules={[{ required: true, message: "Please enter product title" }]}
+            label="Заголовок продукта"
+            rules={[
+              {
+                required: true,
+                message: "Пожалуйста введите заголовок продукта",
+              },
+            ]}
           >
             <Input
               name="productTitle"
               initialValue={editProductValue?.productTitle}
-              placeholder="Enter product title"
+              placeholder="Введите заголовок продукта"
               onChange={handleUpdateProductOnChange}
             />
           </Form.Item>
 
           <Form.Item
-            label="Product Description"
+            label="Описание продукта"
             rules={[
-              { required: true, message: "Please enter product description" },
+              {
+                required: true,
+                message: "Пожалуйста введите описание продукта",
+              },
             ]}
           >
             <Input.TextArea
               name="description"
               initialValue={editProductValue?.description}
-              placeholder="Enter product description"
+              placeholder="Введите описание продукта"
               onChange={handleUpdateProductOnChange}
             />
           </Form.Item>

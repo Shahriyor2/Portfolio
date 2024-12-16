@@ -6,10 +6,9 @@ import {
   Phone,
   User,
 } from "lucide-react";
-import classes from "./clientinfo.module.scss";
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import ModalAuth from "../Auth";
+import classes from "./clientinfo.module.scss";
 
 const ClientInfo = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -22,7 +21,7 @@ const ClientInfo = () => {
           justifyContent: "space-between",
           alignItems: "center",
           padding: "0 40px",
-          flexDirection: "column",
+          // flexDirection: "column",
         }}
       >
         <div className={classes["content"]}>

@@ -73,7 +73,7 @@ const Products = ({ categoriesData, records, total_count, isLoading }) => {
             className={classes["minus-block"]}
             style={{ display: "flex", gap: "176px" }}
           >
-            <h1 onClick={() => dispatch(getProducts())}>Products</h1>
+            <h1 onClick={() => dispatch(getProducts(1))}>Products</h1>
             {isActive ? (
               <Minus onClick={handleClassOnChange} />
             ) : (
@@ -122,13 +122,16 @@ const Products = ({ categoriesData, records, total_count, isLoading }) => {
               ))
             )}
           </div>
-          <p className={classes["products-container__total-count"]}>
-            {records && records.length > 0 && (
-              <>
-                Общее количество продуктов: <span>{total_count}</span>
-              </>
-            )}
-          </p>
+
+          <div className={classes["products-container__total-count"]}>
+            <p>
+              {records && records.length > 0 && (
+                <>
+                  Общее количество продуктов: <span>{total_count}</span>
+                </>
+              )}
+            </p>
+          </div>
         </div>
       </div>
     </section>

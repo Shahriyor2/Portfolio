@@ -127,8 +127,10 @@
           transition: all 0.2s ease-in-out;
 
           & img {
-            height: 198px;
+            // height: 198px;
+            height: 100%;
             width: 198px;
+            object-fit: cover;
           }
 
           p {
@@ -163,6 +165,10 @@
   }
 }
 
+.products-container__total-count {
+  margin-top: 13px;
+}
+
 .skeletonContainer {
   display: flex;
   gap: 16px;
@@ -195,10 +201,6 @@
     ul {
       display: flex;
     }
-  }
-
-  .products-container__total-count {
-    margin-top: 13px;
   }
 
   .container .overlay .products-container {

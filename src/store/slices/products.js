@@ -6,7 +6,7 @@ export const productsSlice = createSlice({
   initialState: {
     categoriesData: [],
     records: [],
-    page: 0,
+    page: 1,
     perpage: 0,
     total_count: 0,
     total_pages: 0,
@@ -45,12 +45,12 @@ export function getProductsCategories() {
   };
 }
 
-export function getProducts() {
+export function getProducts({ page = 1 }) {
   return async function (dispatch) {
     try {
       dispatch(productsLoading(true));
       const response = await axios.get(
-        "http://10.251.4.131/kurbonoff/getProducts"
+        `http://10.251.4.131/kurbonoff/getProducts?page=${page}`
       );
 
       const { data } = response.data;
@@ -73,11 +73,11 @@ export function getProducts() {
   };
 }
 
-export function getProductsByCategory(categoryId) {
+export function getProductsByCategory(categoryId, page = 1) {
   return async function (dispatch) {
     try {
       const response = await axios.get(
-        `http://10.251.4.131/kurbonoff/getProducts?category_id=${categoryId}`
+        `http://10.251.4.131/kurbonoff/getProducts?category_id=${categoryId}&page=${page}`
       );
       const { data } = response.data;
       dispatch(
