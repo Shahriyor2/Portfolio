@@ -127,8 +127,8 @@
           transition: all 0.2s ease-in-out;
 
           & img {
-            // height: 198px;
             height: 100%;
+            max-height: 229px;
             width: 198px;
             object-fit: cover;
           }

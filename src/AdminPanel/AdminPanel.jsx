@@ -38,6 +38,7 @@ const AdminPanel = ({
   handleCreateCategoryOnChange,
   //
   handleUpdateProductId,
+  handleUpdateProducCategorytId,
 }) => {
   const categoryOptions = categoryIdData?.map((item) => ({
     label: item.name,
@@ -295,7 +296,7 @@ const AdminPanel = ({
           <Form.Item label="Category" name="category_id">
             <Select
               value={editProductValue?.category_id}
-              onChange={handleUpdateProductOnChange}
+              onChange={handleUpdateProducCategorytId}
               options={categoryOptions}
             />
           </Form.Item>

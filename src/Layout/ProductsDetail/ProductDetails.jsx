@@ -89,6 +89,7 @@ const ProductDetails = () => {
             {product.map((item) => {
               return (
                 <>
+                  {/* {console.log("item: ", item)} */}
                   {/* <img key={item?.id} src={item?.image_path} alt="image_path" /> */}
                   <img
                     src={`http://10.251.4.131/kurbonoff/upload?filename=${item.image_path}`}
@@ -102,7 +103,6 @@ const ProductDetails = () => {
           <div className={classes["product-container-info__right-section"]}>
             {product.map((item) => (
               <>
-                {console.log(item.pdf_path)}
                 <h1 style={{ textTransform: "uppercase" }} key={item.id}>
                   {item?.title}
                 </h1>
@@ -119,11 +119,12 @@ const ProductDetails = () => {
         </div>
       </section>
 
-      <section>
-        {product.map((item) => (
+      <section style={{padding: 40}}>
+        {product.map((item, index) => (
           <img
-            key={item.pdf_path}
-            src={`http://10.251.4.131/kurbonoff/upload?filename=${item.pdf_path}`}
+            key={index}
+            src={`http://10.251.4.131/kurbonoff/upload?filename=${item.image_path}`}
+            alt="image"
           />
         ))}
       </section>

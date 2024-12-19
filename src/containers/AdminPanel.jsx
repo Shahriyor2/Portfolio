@@ -102,6 +102,10 @@ const AdminPanelBusiness = () => {
     setEditProductValue((prev) => ({ ...prev, id: id_value }));
   };
 
+  const handleUpdateProducCategorytId = (category_id) => {
+    setEditProductValue((prev) => ({ ...prev, category_id: category_id }));
+  };
+
   const handleCategoryOnChange = (e) => {
     const { name, value } = e.target;
     setValue((prev) => ({ ...prev, [name]: value }));
@@ -300,6 +304,7 @@ const AdminPanelBusiness = () => {
     editProductValue,
     setEditProductValue,
     handleUpdateProductOnChange,
+    handleUpdateProducCategorytId,
     handleUpdateProductId,
     setImageFileToUpdate,
     setPdfFileToUpdate,
