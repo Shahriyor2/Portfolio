@@ -4,11 +4,18 @@ import axios from "axios";
 import classes from "./productDetails.module.scss";
 import { Home, Slash } from "lucide-react";
 import background from "/public/assets/about-us/background.jpg";
+import ClientInfo from "../ClientInfo/ClientInfo";
+import { Document, Page, pdfjs } from "react-pdf";
+import { message } from "antd";
+import Navbar from "../Navbar/Navbar";
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 const ProductDetails = () => {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [pdfUrl, setPdfUrl] = useState(null);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -17,6 +24,12 @@ const ProductDetails = () => {
           `http://10.251.4.131/kurbonoff/getProducts?id=${id}`
         );
         setProduct(response.data.data.records);
+        const pdfPath = response.data.data.records[0]?.pdf_path;
+        if (pdfPath) {
+          const pdfUrl = `http://10.251.4.131/kurbonoff/upload?filename=${pdfPath}`;
+          console.log("PDF URL:", pdfUrl);
+          setPdfUrl(pdfUrl);
+        }
       } catch (error) {
         console.error("Ошибка загрузки продукта:", error);
       } finally {
@@ -51,6 +64,7 @@ const ProductDetails = () => {
       document.body.appendChild(link);
       link.click();
       link.remove();
+      message.success("PDF-файл успешно загружен!");
     } catch (error) {
       console.log(error);
     }
@@ -58,6 +72,8 @@ const ProductDetails = () => {
 
   return (
     <section className={classes["container"]}>
+      <ClientInfo />
+      <Navbar />
       {/* показ навигации */}
       <div className={classes["bread-background"]}>
         <img height={205} src={background} alt="" />
@@ -88,24 +104,19 @@ const ProductDetails = () => {
           <div className={classes["product-container-info__left-section"]}>
             {product.map((item) => {
               return (
-                <>
-                  {/* {console.log("item: ", item)} */}
-                  {/* <img key={item?.id} src={item?.image_path} alt="image_path" /> */}
-                  <img
-                    src={`http://10.251.4.131/kurbonoff/upload?filename=${item.image_path}`}
-                    alt="image"
-                  />
-                </>
+                <img
+                  key={item.id}
+                  src={`http://10.251.4.131/kurbonoff/upload?filename=${item.image_path}`}
+                  alt="image"
+                />
               );
             })}
           </div>
 
           <div className={classes["product-container-info__right-section"]}>
             {product.map((item) => (
-              <>
-                <h1 style={{ textTransform: "uppercase" }} key={item.id}>
-                  {item?.title}
-                </h1>
+              <div key={item.id}>
+                <h1 style={{ textTransform: "uppercase" }}>{item?.title}</h1>
                 <p>{item?.description}</p>
                 <button
                   onClick={() => handleDownloadPDF(item.pdf_path)}
@@ -113,21 +124,25 @@ const ProductDetails = () => {
                 >
                   PDF DOWNLOAD
                 </button>
-              </>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section style={{padding: 40}}>
-        {product.map((item, index) => (
-          <img
-            key={index}
-            src={`http://10.251.4.131/kurbonoff/upload?filename=${item.image_path}`}
-            alt="image"
-          />
-        ))}
-      </section>
+      {/* Если PDF URL существует, отображаем PDF */}
+      {pdfUrl && (
+        <section style={{ padding: "40px 0" }}>
+          <h2>PDF Preview</h2>
+          <Document
+            file={pdfUrl}
+            onLoadError={console.error}
+            onLoadSuccess={() => console.log("PDF загружен")}
+          >
+            <Page pageNumber={1} />
+          </Document>
+        </section>
+      )}
     </section>
   );
 };

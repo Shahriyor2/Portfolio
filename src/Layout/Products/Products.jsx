@@ -10,7 +10,13 @@ import classes from "./products.module.scss";
 import background from "/public/assets/about-us/background.jpg";
 import ContentLoader from "react-content-loader";
 
-const Products = ({ categoriesData, records, total_count, isLoading }) => {
+const Products = ({
+  categoriesData,
+  records,
+  total_count,
+  isLoading,
+  perpage,
+}) => {
   const [isActive, setIsActive] = useState(false);
   const dispatch = useDispatch();
 
@@ -35,7 +41,7 @@ const Products = ({ categoriesData, records, total_count, isLoading }) => {
           width={198}
           height={279}
           viewBox="0 0 198 279"
-          backgroundColor="#f3f3f3"
+          backgroundColor="#e0e0e0"
           foregroundColor="#ecebeb"
         >
           <rect x="27" y="22" rx="12" ry="12" width="198" height="279" />
@@ -127,7 +133,7 @@ const Products = ({ categoriesData, records, total_count, isLoading }) => {
             <p>
               {records && records.length > 0 && (
                 <>
-                  Общее количество продуктов: <span>{total_count}</span>
+                  Общее количество продуктов: <span>{perpage}</span>
                 </>
               )}
             </p>

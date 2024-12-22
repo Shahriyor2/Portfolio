@@ -1,4 +1,3 @@
-"use client";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import classes from "./navbar.module.scss";
@@ -34,24 +33,31 @@ const Navbar = () => {
       className={`${classes["navbar-container"]} ${
         isScrolled ? classes["navbar-sticky"] : ""
       }`}
+      aria-label="Основное меню"
     >
       <div className={classes["content"]}>
-        <Link to="/">
-          <img width={111} height={60} src={logo} alt="логотип" />
+        <Link to="/" aria-label="Перейти на главную страницу">
+          <img width={111} height={60} src={logo} alt="Логотип компании" />
         </Link>
 
-        {/* навигация */}
+        {/* Навигация */}
         <div className={classes["navbar-container__navigation"]}>
           <ul>
-            <Link to="/" className={getLinkClass("/")}>
-              <li>Главная</li>
-            </Link>
-            <Link to="/about-us" className={getLinkClass("/about-us")}>
-              <li>О нас</li>
-            </Link>
-            <Link to="/products" className={getLinkClass("/products")}>
-              <li>Продукты</li>
-            </Link>
+            <li>
+              <Link to="/" className={getLinkClass("/")}>
+                Главная
+              </Link>
+            </li>
+            <li>
+              <Link to="/about-us" className={getLinkClass("/about-us")}>
+                О нас
+              </Link>
+            </li>
+            <li>
+              <Link to="/products" className={getLinkClass("/products")}>
+                Продукты
+              </Link>
+            </li>
           </ul>
         </div>
       </div>

@@ -7,11 +7,14 @@ import {
   Select,
   Table,
   Upload,
+  Tabs,
 } from "antd";
 import "antd/dist/reset.css";
 import PropTypes from "prop-types";
 import classes from "./adminpanel.module.scss";
 import { UploadOutlined } from "@ant-design/icons";
+
+const { TabPane } = Tabs;
 
 const AdminPanel = ({
   value,
@@ -34,9 +37,7 @@ const AdminPanel = ({
   handleUpdateProductOnChange,
   handleUpdateImageChange,
   handleUpdatePdfChange,
-  //
   handleCreateCategoryOnChange,
-  //
   handleUpdateProductId,
   handleUpdateProducCategorytId,
 }) => {
@@ -70,20 +71,17 @@ const AdminPanel = ({
         return category ? category.name : "N/A";
       },
     },
-
     {
       title: "Редактор",
       key: "action",
       render: (_, record) => (
-        <>
-          <Button
-            style={{ marginRight: 8 }}
-            onClick={() => handleDeleteProduct(record)}
-            danger
-          >
-            Delete
-          </Button>
-        </>
+        <Button
+          style={{ marginRight: 8 }}
+          onClick={() => handleDeleteProduct(record)}
+          danger
+        >
+          Delete
+        </Button>
       ),
     },
   ];
@@ -103,229 +101,228 @@ const AdminPanel = ({
       title: "Редактор",
       key: "action",
       render: (_, record) => (
-        <>
-          <Button onClick={() => handleDeleteCategory(record)} danger>
-            Delete
-          </Button>
-        </>
+        <Button onClick={() => handleDeleteCategory(record)} danger>
+          Delete
+        </Button>
       ),
     },
   ];
 
   return (
     <div className={classes["admin-container"]}>
-      {/* Category Management */}
-      <div className={classes["createCatageries"]} style={{ marginBottom: 40 }}>
-        <h1>Создание категории</h1>
-        <Form onFinish={() => handleCreateCategory(value)} layout="vertical">
-          <Form.Item
-            label="Название категории"
-            rules={[{ required: true, message: "Please enter category name" }]}
+      <Tabs defaultActiveKey="1" centered>
+        <TabPane tab="Создание категории" key="1">
+          <div
+            className={classes["createCatageries"]}
+            style={{ marginBottom: 40 }}
           >
-            <Input
-              name="name"
-              placeholder="Enter category name"
-              value={value?.name}
-              onChange={handleCategoryOnChange}
-            />
-          </Form.Item>
-          <Button type="primary" htmlType="submit">
-            Create Category
-          </Button>
-        </Form>
-      </div>
-
-      {/* Product Management */}
-      <div className={classes["createProduct"]} style={{ marginBottom: 80 }}>
-        <h1>Создание продукта</h1>
-        <Form onFinish={() => handleCreateProduct(value)} layout="vertical">
-          <Form.Item
-            label="Заголовок продукта"
-            rules={[{ required: true, message: "Please enter product title" }]}
-          >
-            <Input
-              name="productTitle"
-              initialValue={value?.productTitle}
-              placeholder="Enter product title"
-              onChange={handleCategoryOnChange}
-            />
-          </Form.Item>
-
-          <Form.Item
-            label="Описание продукта"
-            rules={[
-              { required: true, message: "Please enter product description" },
-            ]}
-          >
-            <Input.TextArea
-              name="description"
-              initialValue={value?.description}
-              placeholder="Enter product description"
-              onChange={handleCategoryOnChange}
-            />
-          </Form.Item>
-
-          <Form.Item label="Категория" name="category_id">
-            <Select
-              value={value?.category_id}
-              // onChange={handleCategoryOnChange}
-              onChange={handleCreateCategoryOnChange}
-              options={categoryOptions}
-              placeholder="Select category"
-            />
-          </Form.Item>
-
-          <Row>
-            <Form.Item
-              label="Дата создания"
-              name="created_at"
-              className={classes["form-item-spacing"]}
+            <h1>Создание категории</h1>
+            <Form
+              onFinish={() => handleCreateCategory(value)}
+              layout="vertical"
             >
-              <DatePicker
-                value={value?.created_at}
-                onChange={handleDateOnChange}
-                className="date-picker"
-              />
-            </Form.Item>
-
-            <Form.Item
-              label="Картина продукта"
-              className={classes["form-item-spacing"]}
-            >
-              <Upload
-                onChange={handleImageChange}
-                showUploadList={false}
-                accept="image/*"
+              <Form.Item
+                label="Название категории"
+                rules={[
+                  { required: true, message: "Please enter category name" },
+                ]}
               >
-                <Button icon={<UploadOutlined />}>Upload Image</Button>
-              </Upload>
-            </Form.Item>
+                <Input
+                  name="name"
+                  placeholder="Enter category name"
+                  value={value?.name}
+                  onChange={handleCategoryOnChange}
+                />
+              </Form.Item>
+              <Button type="primary" htmlType="submit">
+                Create Category
+              </Button>
+            </Form>
+          </div>
+        </TabPane>
 
-            <Form.Item
-              label="PDF - файл"
-              className={classes["form-item-spacing"]}
-            >
-              <Upload
-                onChange={handlePdfChange}
-                showUploadList={false}
-                accept=".pdf"
+        <TabPane tab="Создание продукта" key="2">
+          <div
+            className={classes["createProduct"]}
+            style={{ marginBottom: 80 }}
+          >
+            <h1>Создание продукта</h1>
+            <Form onFinish={() => handleCreateProduct(value)} layout="vertical">
+              <Form.Item
+                label="Заголовок продукта"
+                rules={[
+                  { required: true, message: "Please enter product title" },
+                ]}
               >
-                <Button icon={<UploadOutlined />}>Upload PDF</Button>
-              </Upload>
-            </Form.Item>
-          </Row>
+                <Input
+                  name="productTitle"
+                  initialValue={value?.productTitle}
+                  placeholder="Enter product title"
+                  onChange={handleCategoryOnChange}
+                />
+              </Form.Item>
 
-          <Button type="primary" htmlType="submit">
-            Create Product
-          </Button>
-        </Form>
-      </div>
+              <Form.Item
+                label="Описание продукта"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please enter product description",
+                  },
+                ]}
+              >
+                <Input.TextArea
+                  name="description"
+                  initialValue={value?.description}
+                  placeholder="Enter product description"
+                  onChange={handleCategoryOnChange}
+                />
+              </Form.Item>
 
-      {/* Tables */}
-      <div className={classes["admin-tables"]}>
-        <h2>Категория</h2>
-        <Table
-          columns={categoryColumns}
-          dataSource={categoryIdData}
-          rowKey="id"
-        />
+              <Form.Item label="Категория" name="category_id">
+                <Select
+                  value={value?.category_id}
+                  onChange={handleCreateCategoryOnChange}
+                  options={categoryOptions}
+                  placeholder="Select category"
+                />
+              </Form.Item>
 
-        <h2>Продукты</h2>
-        <Table
-          columns={productColumns}
-          dataSource={productData?.records || []}
-          rowKey="id"
-        />
-      </div>
+              <Row>
+                <Form.Item
+                  label="Дата создания"
+                  name="created_at"
+                  className={classes["form-item-spacing"]}
+                >
+                  <DatePicker
+                    value={value?.created_at}
+                    onChange={handleDateOnChange}
+                    className="date-picker"
+                  />
+                </Form.Item>
 
-      {/* Edit Product */}
-      <div
-        className={classes["editProduct"]}
-        style={{ paddingBottom: 80, marginTop: 40 }}
-      >
-        <h1>
-          Изменения продукта
-          <span style={{ color: "gray" }}> (ручной ввод данных) </span>
-        </h1>
-        <Form
-          onFinish={() => handleUpdateProduct(editProductValue)}
-          layout="vertical"
-        >
-          <Form.Item label="Id" name="id">
-            <Select
-              value={editProductValue?.id}
-              onChange={handleUpdateProductId}
-              options={productOptions}
-              placeholder="Выберите продукт"
-            />
-          </Form.Item>
-          <Form.Item
-            label="Заголовок продукта"
-            rules={[
-              {
-                required: true,
-                message: "Пожалуйста введите заголовок продукта",
-              },
-            ]}
+                <Form.Item
+                  label="Картина продукта"
+                  className={classes["form-item-spacing"]}
+                >
+                  <Upload
+                    onChange={handleImageChange}
+                    showUploadList={false}
+                    accept="image/*"
+                  >
+                    <Button icon={<UploadOutlined />}>Upload Image</Button>
+                  </Upload>
+                </Form.Item>
+
+                <Form.Item
+                  label="PDF - файл"
+                  className={classes["form-item-spacing"]}
+                >
+                  <Upload
+                    onChange={handlePdfChange}
+                    showUploadList={false}
+                    accept=".pdf"
+                  >
+                    <Button icon={<UploadOutlined />}>Upload PDF</Button>
+                  </Upload>
+                </Form.Item>
+              </Row>
+
+              <Button type="primary" htmlType="submit">
+                Create Product
+              </Button>
+            </Form>
+          </div>
+        </TabPane>
+
+        <TabPane tab="Изменения продукта" key="3">
+          <div
+            className={classes["editProduct"]}
+            style={{ paddingBottom: 80, marginTop: 40 }}
           >
-            <Input
-              name="productTitle"
-              initialValue={editProductValue?.productTitle}
-              placeholder="Введите заголовок продукта"
-              onChange={handleUpdateProductOnChange}
-            />
-          </Form.Item>
-
-          <Form.Item
-            label="Описание продукта"
-            rules={[
-              {
-                required: true,
-                message: "Пожалуйста введите описание продукта",
-              },
-            ]}
-          >
-            <Input.TextArea
-              name="description"
-              initialValue={editProductValue?.description}
-              placeholder="Введите описание продукта"
-              onChange={handleUpdateProductOnChange}
-            />
-          </Form.Item>
-
-          <Form.Item label="Category" name="category_id">
-            <Select
-              value={editProductValue?.category_id}
-              onChange={handleUpdateProducCategorytId}
-              options={categoryOptions}
-            />
-          </Form.Item>
-
-          {/* <Form.Item label="Product Image">
-            <Upload
-              beforeUpload={handleUpdateImageChange}
-              showUploadList={false}
-              accept="image/*"
+            <h1>
+              Изменения продукта
+              <span style={{ color: "gray" }}> (ручной ввод данных) </span>
+            </h1>
+            <Form
+              onFinish={() => handleUpdateProduct(editProductValue)}
+              layout="vertical"
             >
-              <Button icon={<UploadOutlined />}>Upload Image</Button>
-            </Upload>
-          </Form.Item>
+              <Form.Item label="Id" name="id">
+                <Select
+                  value={editProductValue?.id}
+                  onChange={handleUpdateProductId}
+                  options={productOptions}
+                  placeholder="Выберите продукт"
+                />
+              </Form.Item>
+              <Form.Item
+                label="Заголовок продукта"
+                rules={[
+                  {
+                    required: true,
+                    message: "Пожалуйста введите заголовок продукта",
+                  },
+                ]}
+              >
+                <Input
+                  name="productTitle"
+                  initialValue={editProductValue?.productTitle}
+                  placeholder="Введите заголовок продукта"
+                  onChange={handleUpdateProductOnChange}
+                />
+              </Form.Item>
 
-          <Form.Item label="PDF File">
-            <Upload
-              beforeUpload={handleUpdatePdfChange}
-              showUploadList={false}
-              accept=".pdf"
-            >
-              <Button icon={<UploadOutlined />}>Upload PDF</Button>
-            </Upload>
-          </Form.Item> */}
+              <Form.Item
+                label="Описание продукта"
+                rules={[
+                  {
+                    required: true,
+                    message: "Пожалуйста введите описание продукта",
+                  },
+                ]}
+              >
+                <Input.TextArea
+                  name="description"
+                  initialValue={editProductValue?.description}
+                  placeholder="Введите описание продукта"
+                  onChange={handleUpdateProductOnChange}
+                />
+              </Form.Item>
 
-          <Button type="primary" htmlType="submit">
-            Update Product
-          </Button>
-        </Form>
-      </div>
+              <Form.Item label="Категория" name="category_id">
+                <Select
+                  value={editProductValue?.category_id}
+                  onChange={handleUpdateProducCategorytId}
+                  options={categoryOptions}
+                />
+              </Form.Item>
+
+              <Button type="primary" htmlType="submit">
+                Update Product
+              </Button>
+            </Form>
+          </div>
+        </TabPane>
+
+        <TabPane tab="Таблицы" key="4">
+          <div className={classes["admin-tables"]}>
+            <h2>Категория</h2>
+            <Table
+              columns={categoryColumns}
+              dataSource={categoryIdData}
+              rowKey="id"
+            />
+
+            <h2>Продукты</h2>
+            <Table
+              columns={productColumns}
+              dataSource={productData?.records || []}
+              rowKey="id"
+            />
+          </div>
+        </TabPane>
+      </Tabs>
     </div>
   );
 };

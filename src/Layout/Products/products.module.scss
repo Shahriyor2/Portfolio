@@ -70,12 +70,14 @@
         padding-top: 6px;
         transition: opacity 0.3s ease-in-out;
         opacity: 1;
+        max-width: 270px;
 
         li {
           padding: 10px 0px 10px 15px;
           list-style-type: none;
           transition: color 0.2s ease-in-out;
           cursor: pointer;
+          color: rgb(108, 108, 108);
 
           &:hover {
             color: #3aadda;

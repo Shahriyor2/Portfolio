@@ -5,7 +5,7 @@ import {
   getProducts,
   getProductsCategories,
 } from "../../store/slices/products";
-import { Button } from "antd";
+import { Button, Typography } from "antd";
 
 const ProductsBussiness = () => {
   const dispatch = useDispatch();
@@ -15,18 +15,19 @@ const ProductsBussiness = () => {
   const total_count = useSelector(({ products }) => products.total_count);
   const isLoading = useSelector(({ products }) => products.isLoading);
   const total_pages = useSelector(({ products }) => products.total_pages);
+  const perpage = useSelector(({ products }) => products.perpage);
 
-  const [currentPage, setCurrentPage] = useState(1); // Состояние текущей страницы
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     dispatch(getProductsCategories());
     dispatch(getProducts({ page: currentPage }));
+
+    window.scroll({ top: 70, behavior: "smooth" });
   }, [dispatch, currentPage]);
 
   const handlePageChange = (page) => {
-    if (page > 0 && page <= total_pages) {
-      setCurrentPage(page);
-    }
+    setCurrentPage(page);
   };
 
   return (
@@ -36,6 +37,7 @@ const ProductsBussiness = () => {
         records={records}
         total_count={total_count}
         isLoading={isLoading}
+        perpage={perpage}
       />
       {/* Пагинация */}
       <div
@@ -45,6 +47,7 @@ const ProductsBussiness = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          marginBottom: 40,
         }}
       >
         <div>
@@ -55,7 +58,13 @@ const ProductsBussiness = () => {
           >
             Назад
           </Button>
-          <span>{`Страница ${currentPage} из ${total_pages}`}</span>
+          <span>
+            Страница <Typography.Text strong>{currentPage}</Typography.Text> из
+            <Typography.Text strong style={{ marginLeft: 5 }}>
+              {total_pages}
+            </Typography.Text>
+          </span>
+
           <Button
             disabled={currentPage === total_pages}
             onClick={() => handlePageChange(currentPage + 1)}
