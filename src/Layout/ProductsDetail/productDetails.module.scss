@@ -72,11 +72,13 @@
 
     &__right-section {
       flex-grow: 1;
-      // border: 1px solid;
-      padding-left: 30px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+
+      .overlay {
+        padding-left: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
 
       h1 {
         font-size: 25px;
@@ -101,6 +103,9 @@
       cursor: pointer;
       width: max-content;
     }
+  }
+  .pdf-overlay {
+    padding: 40px !important;
   }
 
   @media (max-width: 768px) {

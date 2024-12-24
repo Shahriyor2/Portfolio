@@ -8,6 +8,7 @@ import ClientInfo from "../ClientInfo/ClientInfo";
 import { Document, Page, pdfjs } from "react-pdf";
 import { message } from "antd";
 import Navbar from "../Navbar/Navbar";
+import Footer from "../Footer/Footer";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
@@ -115,7 +116,11 @@ const ProductDetails = () => {
 
           <div className={classes["product-container-info__right-section"]}>
             {product.map((item) => (
-              <div key={item.id}>
+              <div
+                className={classes["overlay"]}
+                // style={{ display: "flex", flexDirection: "column" }}
+                key={item.id}
+              >
                 <h1 style={{ textTransform: "uppercase" }}>{item?.title}</h1>
                 <p>{item?.description}</p>
                 <button
@@ -132,7 +137,10 @@ const ProductDetails = () => {
 
       {/* Если PDF URL существует, отображаем PDF */}
       {pdfUrl && (
-        <section style={{ padding: "40px 0" }}>
+        <section
+          className={classes["pdf-overlay"]}
+          style={{ padding: "40px 0" }}
+        >
           <h2>PDF Preview</h2>
           <Document
             file={pdfUrl}
@@ -143,6 +151,7 @@ const ProductDetails = () => {
           </Document>
         </section>
       )}
+      <Footer />
     </section>
   );
 };

@@ -8,6 +8,7 @@ import {
   Table,
   Upload,
   Tabs,
+  Typography,
 } from "antd";
 import "antd/dist/reset.css";
 import PropTypes from "prop-types";
@@ -15,6 +16,8 @@ import classes from "./adminpanel.module.scss";
 import { UploadOutlined } from "@ant-design/icons";
 
 const { TabPane } = Tabs;
+
+const { Text } = Typography;
 
 const AdminPanel = ({
   value,
@@ -61,19 +64,36 @@ const AdminPanel = ({
       title: "Название продукта",
       dataIndex: "title",
       key: "title",
+      width: 200,
     },
     {
       title: "Категория",
       dataIndex: "category_id",
       key: "category_id",
+
       render: (categoryId) => {
         const category = categoryIdData.find((cat) => cat.id === categoryId);
         return category ? category.name : "N/A";
       },
+      align: "center",
+      filters: categoryIdData?.map((category) => ({
+        text: category.name,
+        value: category.id,
+      })),
+      onFilter: (value, record) => record.category_id === value,
+      filterMultiple: true,
+    },
+    {
+      title: "Описание",
+      dataIndex: "description",
+      key: "description",
+      width: 300,
+      render: (description) => <Text copyable={true}>{description}</Text>,
     },
     {
       title: "Редактор",
       key: "action",
+      align: "center",
       render: (_, record) => (
         <Button
           style={{ marginRight: 8 }}
