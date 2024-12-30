@@ -1,3 +1,4 @@
+import { UploadOutlined } from "@ant-design/icons";
 import {
   Button,
   DatePicker,
@@ -6,14 +7,14 @@ import {
   Row,
   Select,
   Table,
-  Upload,
   Tabs,
   Typography,
+  Upload,
 } from "antd";
 import "antd/dist/reset.css";
 import PropTypes from "prop-types";
 import classes from "./adminpanel.module.scss";
-import { UploadOutlined } from "@ant-design/icons";
+import { useEffect } from "react";
 
 const { TabPane } = Tabs;
 
@@ -29,21 +30,19 @@ const AdminPanel = ({
   handleImageChange,
   handlePdfChange,
   handleDeleteProduct,
-  deleteCategoryValue,
-  handleDeleteCategoryOnChange,
-  handleDeleteProductOnChange,
   handleDeleteCategory,
-  deleteProductValue,
   productData,
   editProductValue,
   handleUpdateProduct,
   handleUpdateProductOnChange,
-  handleUpdateImageChange,
-  handleUpdatePdfChange,
   handleCreateCategoryOnChange,
   handleUpdateProductId,
   handleUpdateProducCategorytId,
 }) => {
+  useEffect(() => {
+    document.title = "Админ-панель";
+  }, []);
+
   const categoryOptions = categoryIdData?.map((item) => ({
     label: item.name,
     value: item.id,
@@ -88,6 +87,7 @@ const AdminPanel = ({
       dataIndex: "description",
       key: "description",
       width: 300,
+      align: "center",
       render: (description) => <Text copyable={true}>{description}</Text>,
     },
     {
@@ -201,10 +201,16 @@ const AdminPanel = ({
 
               <Form.Item label="Категория" name="category_id">
                 <Select
+                  showSearch
+                  placeholder="Введите или выберите категорию"
                   value={value?.category_id}
                   onChange={handleCreateCategoryOnChange}
                   options={categoryOptions}
-                  placeholder="Select category"
+                  filterOption={(input, option) =>
+                    (option?.label ?? "")
+                      .toLowerCase()
+                      .includes(input.toLowerCase())
+                  }
                 />
               </Form.Item>
 
@@ -270,12 +276,19 @@ const AdminPanel = ({
             >
               <Form.Item label="Id" name="id">
                 <Select
+                  showSearch
                   value={editProductValue?.id}
                   onChange={handleUpdateProductId}
                   options={productOptions}
                   placeholder="Выберите продукт"
+                  filterOption={(input, option) =>
+                    (option?.label ?? "")
+                      .toLowerCase()
+                      .includes(input.toLowerCase())
+                  }
                 />
               </Form.Item>
+
               <Form.Item
                 label="Заголовок продукта"
                 rules={[
@@ -312,9 +325,15 @@ const AdminPanel = ({
 
               <Form.Item label="Категория" name="category_id">
                 <Select
+                  showSearch={true}
                   value={editProductValue?.category_id}
                   onChange={handleUpdateProducCategorytId}
                   options={categoryOptions}
+                  filterOption={(input, option) =>
+                    (option?.label ?? "")
+                      .toLowerCase()
+                      .includes(input.toLowerCase())
+                  }
                 />
               </Form.Item>
 

@@ -5,7 +5,6 @@ import { message } from "antd";
 
 const API_BASE_URL = "http://10.251.4.131/kurbonoff"; // Базовый URL
 
-// Универсальная функция для отправки запросов
 const apiRequest = async (method, url, data = null, headers = {}) => {
   try {
     const response = await axios({

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Modal from "react-modal";
 import styles from "./auth.module.scss";
 import { useNavigate } from "react-router-dom";
+import { message } from "antd";
 
 const customStyles = {
   overlay: {
@@ -52,6 +53,7 @@ function ModalAuth({ modalIsOpen, setIsOpen }) {
       if (response.status === 200) {
         navigate("/adPan");
       } else {
+        message.error()
         setValue({ login: "", password: "" });
       }
       console.log(response);
