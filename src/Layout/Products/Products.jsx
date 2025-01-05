@@ -10,13 +10,7 @@ import classes from "./products.module.scss";
 import background from "/public/assets/about-us/background.jpg";
 import ContentLoader from "react-content-loader";
 
-const Products = ({
-  categoriesData,
-  records,
-  total_count,
-  isLoading,
-  perpage,
-}) => {
+const Products = ({ categoriesData, records, isLoading, perpage }) => {
   const [isActive, setIsActive] = useState(false);
   const dispatch = useDispatch();
 

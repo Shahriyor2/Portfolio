@@ -13,8 +13,9 @@ import {
 } from "antd";
 import "antd/dist/reset.css";
 import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import classes from "./adminpanel.module.scss";
-import { useEffect } from "react";
 
 const { TabPane } = Tabs;
 
@@ -42,6 +43,8 @@ const AdminPanel = ({
   useEffect(() => {
     document.title = "Админ-панель";
   }, []);
+
+  const [currentPage, setCurrentPage] = useState(1);
 
   const categoryOptions = categoryIdData?.map((item) => ({
     label: item.name,
@@ -127,6 +130,17 @@ const AdminPanel = ({
       ),
     },
   ];
+
+  const handleTableChange = (pagination) => {
+    setCurrentPage(pagination.current);
+    console.log(1);
+  };
+
+  useEffect(() => {
+    // Загрузите данные для текущей страницы
+    console.log(`Fetching data for page: ${currentPage}`);
+    // fetchData(currentPage);
+  }, [currentPage]);
 
   return (
     <div className={classes["admin-container"]}>
@@ -358,6 +372,13 @@ const AdminPanel = ({
               columns={productColumns}
               dataSource={productData?.records || []}
               rowKey="id"
+              pagination={{
+                current: currentPage,
+                pageSize: 1,
+                total: productData?.total_count || 0,
+                showSizeChanger: false,
+              }}
+              onChange={handleTableChange}
             />
           </div>
         </TabPane>

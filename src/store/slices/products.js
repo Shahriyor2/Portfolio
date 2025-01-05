@@ -20,9 +20,10 @@ export const productsSlice = createSlice({
       state.records = action.payload.records;
       state.page = action.payload.page;
       state.perpage = action.payload.perpage;
-      state.total_count = action.payload.total_count;
+      state.total_count = action.payload.total_count; // Должно быть правильно присвоено
       state.total_pages = action.payload.total_pages;
     },
+
     productsLoading: (state, action) => {
       state.isLoading = action.payload;
     },
@@ -62,6 +63,7 @@ export function getProducts({ page = 1 }) {
           perpage: data.perpage,
           total_count: data.total_count,
           total_pages: data.total_pages,
+          ...data,
         })
       );
       dispatch(productsLoading(false));
