@@ -1,9 +1,12 @@
+import { useEffect } from "react";
 import NothingToHave from "../NothingToHave";
 import classes from "./products.module.scss";
 import first from "/public/assets/hotProducts/1-ая.webp";
 import second from "/public/assets/hotProducts/2-ая.webp";
 import third from "/public/assets/hotProducts/3-тья.webp";
 import fourth from "/public/assets/hotProducts/4-ая.webp";
+import { getProducts } from "../../store/slices/products";
+import { useDispatch, useSelector } from "react-redux";
 
 const Products = () => {
   const productsObj = [
@@ -56,6 +59,14 @@ const Products = () => {
       text: "HJT PVS-710W/720W-M12HDT",
     },
   ];
+  const dispatch = useDispatch();
+  const { records } = useSelector(({ products }) => products);
+
+  console.log("records: ", records);
+
+  useEffect(() => {
+    dispatch(getProducts(1));
+  }, [dispatch]);
 
   return (
     <div className={classes["products-container"]}>
@@ -63,17 +74,18 @@ const Products = () => {
         {!productsObj || productsObj.length === 0 ? (
           <NothingToHave />
         ) : (
-          productsObj.slice(0, 11)?.map((item, key) => {
+          // productsObj.slice(0, 11)?.map((item, key) => {
+          records?.map((item, key) => {
             return (
               <div className={classes["card"]} key={key}>
                 <img
                   width={"100%"}
                   height={205}
-                  src={item.image}
+                  src={`http://10.251.4.131/kurbonoff/upload?filename=${item.image_path}`}
                   alt="картина"
                 />
                 <a href="#">
-                  <p>{item.text}</p>
+                  <p>{item.title}</p>
                 </a>
               </div>
             );

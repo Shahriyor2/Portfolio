@@ -14,7 +14,6 @@ import {
 import "antd/dist/reset.css";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import classes from "./adminpanel.module.scss";
 
 const { TabPane } = Tabs;
@@ -135,12 +134,6 @@ const AdminPanel = ({
     setCurrentPage(pagination.current);
     console.log(1);
   };
-
-  useEffect(() => {
-    // Загрузите данные для текущей страницы
-    console.log(`Fetching data for page: ${currentPage}`);
-    // fetchData(currentPage);
-  }, [currentPage]);
 
   return (
     <div className={classes["admin-container"]}>
@@ -374,7 +367,7 @@ const AdminPanel = ({
               rowKey="id"
               pagination={{
                 current: currentPage,
-                pageSize: 1,
+                pageSize: 15,
                 total: productData?.total_count || 0,
                 showSizeChanger: false,
               }}

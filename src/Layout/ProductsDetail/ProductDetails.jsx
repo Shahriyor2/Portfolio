@@ -2,15 +2,12 @@ import { message } from "antd";
 import axios from "axios";
 import { Home, Slash } from "lucide-react";
 import { useEffect, useState } from "react";
-import { pdfjs } from "react-pdf";
 import { Link, useParams } from "react-router-dom";
 import FooterBs from "../../containers/FooterBussiness/FoterBs";
 import ClientInfo from "../ClientInfo/ClientInfo";
 import Navbar from "../Navbar/Navbar";
 import classes from "./productDetails.module.scss";
 import background from "/public/assets/about-us/background.jpg";
-
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -24,11 +21,6 @@ const ProductDetails = () => {
           `http://10.251.4.131/kurbonoff/getProducts?id=${id}`
         );
         setProduct(response.data.data.records);
-        const pdfPath = response.data.data.records[0]?.pdf_path;
-        if (pdfPath) {
-          const pdfUrl = `http://10.251.4.131/kurbonoff/upload?filename=${pdfPath}`;
-          console.log("PDF URL:", pdfUrl);
-        }
       } catch (error) {
         console.error("Ошибка загрузки продукта:", error);
       } finally {
@@ -63,7 +55,7 @@ const ProductDetails = () => {
       document.body.appendChild(link);
       link.click();
       link.remove();
-      message.success("PDF-файл успешно загружен!");
+      message.success("PDF-файл готов к выгрузке!");
     } catch (error) {
       console.log(error);
     }
@@ -133,22 +125,6 @@ const ProductDetails = () => {
         </div>
       </section>
 
-      {/* Если PDF URL существует, отображаем PDF */}
-      {/* {pdfUrl && (
-        <section
-          className={classes["pdf-overlay"]}
-          style={{ padding: "40px 0" }}
-        >
-          <h2>PDF Preview</h2>
-          <Document
-            file={pdfUrl}
-            onLoadError={console.error}
-            onLoadSuccess={() => console.log("PDF загружен")}
-          >
-            <Page pageNumber={1} />
-          </Document>
-        </section>
-      )} */}
       <FooterBs />
     </section>
   );
