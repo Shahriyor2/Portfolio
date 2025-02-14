@@ -21,6 +21,7 @@ const ProductDetails = () => {
           `http://10.251.4.131/kurbonoff/getProducts?id=${id}`
         );
         setProduct(response.data.data.records);
+        console.log(response.data.data);
       } catch (error) {
         console.error("Ошибка загрузки продукта:", error);
       } finally {
@@ -90,6 +91,7 @@ const ProductDetails = () => {
           ))}
         </div>
       </div>
+
       <section className={classes["first-overlay"]}>
         <div className={classes["product-container-info"]}>
           <div className={classes["product-container-info__left-section"]}>
@@ -104,6 +106,7 @@ const ProductDetails = () => {
             })}
           </div>
 
+          {console.log("product: ", product)}
           <div className={classes["product-container-info__right-section"]}>
             {product.map((item) => (
               <div

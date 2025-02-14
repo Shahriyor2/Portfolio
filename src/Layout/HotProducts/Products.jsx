@@ -84,7 +84,7 @@ const Products = () => {
                   src={`http://10.251.4.131/kurbonoff/upload?filename=${item.image_path}`}
                   alt="картина"
                 />
-                <a href="#">
+                <a href={`/products/${item?.id}`}>
                   <p>{item.title}</p>
                 </a>
               </div>
