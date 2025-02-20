@@ -46,7 +46,7 @@ function ModalAuth({ modalIsOpen, setIsOpen }) {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "http://10.251.4.131/kurbonoff/login",
+        "https://solartech.tj/kurbonoff/login",
         value
       );
 

@@ -81,7 +81,7 @@ const Products = () => {
                 <img
                   width={"100%"}
                   height={205}
-                  src={`http://10.251.4.131/kurbonoff/upload?filename=${item.image_path}`}
+                  src={`https://solartech.tj/kurbonoff/upload?filename=${item.image_path}`}
                   alt="картина"
                 />
                 <a href={`/products/${item?.id}`}>

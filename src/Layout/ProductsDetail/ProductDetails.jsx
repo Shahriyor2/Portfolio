@@ -18,7 +18,7 @@ const ProductDetails = () => {
     const fetchProduct = async () => {
       try {
         const response = await axios.get(
-          `http://10.251.4.131/kurbonoff/getProducts?id=${id}`
+          `https://solartech.tj/kurbonoff/getProducts?id=${id}`
         );
         setProduct(response.data.data.records);
         console.log(response.data.data);
@@ -43,7 +43,7 @@ const ProductDetails = () => {
   const handleDownloadPDF = async (image_path) => {
     try {
       const response = await axios.get(
-        `http://10.251.4.131/kurbonoff/upload?filename=${image_path}`,
+        `https://solartech.tj/kurbonoff/upload?filename=${image_path}`,
         {
           responseType: "blob",
         }
@@ -99,7 +99,7 @@ const ProductDetails = () => {
               return (
                 <img
                   key={item.id}
-                  src={`http://10.251.4.131/kurbonoff/upload?filename=${item.image_path}`}
+                  src={`https://solartech.tj/kurbonoff/upload?filename=${item.image_path}`}
                   alt="image"
                 />
               );

@@ -247,6 +247,8 @@
 
   .skeletonContainer {
     gap: 8px;
-    justify-content: flex-start;
+    display: flex;
+    overflow-x: scroll;
+    // justify-content: flex-start;
   }
 }

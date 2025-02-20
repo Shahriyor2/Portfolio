@@ -6,7 +6,7 @@ const Footer = ({ categoriesData }) => {
   const navigate = useNavigate();
 
   const handleCategoryClick = (categoryId) => {
-    navigate("/products");
+    navigate(`/products?category_id=${categoryId}`);
   };
 
   return (

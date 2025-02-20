@@ -1,10 +1,9 @@
+import { message } from "antd";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import AdminPanel from "../AdminPanel/AdminPanel";
-import { message } from "antd";
-import { useSelector } from "react-redux";
 
-const API_BASE_URL = "http://10.251.4.131/kurbonoff"; // Базовый URL
+const API_BASE_URL = "https://solartech.tj/kurbonoff";
 
 const apiRequest = async (method, url, data = null, headers = {}) => {
   try {

@@ -28,7 +28,7 @@ const Products = ({ categoriesData, records, isLoading, perpage }) => {
 
   const renderSkeletons = () => (
     <div className={classes.skeletonContainer}>
-      {new Array(5).fill(null).map((_, index) => (
+      {new Array(3).fill(null).map((_, index) => (
         <ContentLoader
           key={index}
           speed={2}
@@ -114,7 +114,7 @@ const Products = ({ categoriesData, records, isLoading, perpage }) => {
                   className={classes["products-container__box_cart"]}
                 >
                   <img
-                    src={`http://10.251.4.131/kurbonoff/upload?filename=${item.image_path}`}
+                    src={`https://solartech.tj/kurbonoff/upload?filename=${item.image_path}`}
                     alt="image"
                   />
                   <p>{item?.title}</p>

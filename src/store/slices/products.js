@@ -38,7 +38,7 @@ export function getProductsCategories() {
     try {
       const {
         data: { data },
-      } = await axios.get("http://10.251.4.131/kurbonoff/getCategories");
+      } = await axios.get("https://solartech.tj/kurbonoff/getCategories");
       dispatch(categorieseData(data));
     } catch (error) {
       console.error(error);
@@ -51,7 +51,7 @@ export function getProducts({ page = 1 }) {
     try {
       dispatch(productsLoading(true));
       const response = await axios.get(
-        `http://10.251.4.131/kurbonoff/getProducts?page=${page}`
+        `https://solartech.tj/kurbonoff/getProducts?page=${page}`
       );
 
       const { data } = response.data;
@@ -79,7 +79,7 @@ export function getProductsByCategory(categoryId, page = 1) {
   return async function (dispatch) {
     try {
       const response = await axios.get(
-        `http://10.251.4.131/kurbonoff/getProducts?category_id=${categoryId}&page=${page}`
+        `https://solartech.tj/kurbonoff/getProducts?category_id=${categoryId}&page=${page}`
       );
       const { data } = response.data;
       dispatch(
