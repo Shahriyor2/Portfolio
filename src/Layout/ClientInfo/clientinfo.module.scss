@@ -7,6 +7,13 @@
 .clientinfo-container {
   background: #f1f1f1;
 
+  .overlay {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+  }
+
   .content {
     max-width: 1240px;
     margin: 0 auto;
@@ -94,11 +101,19 @@
 }
 
 @media (max-width: 480px) {
+  .overlay {
+    padding: 0 10px !important;
+  }
+
   .content {
-    padding: 10px 15px;
     gap: 15px !important;
-    justify-content: center;
-    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto !important;
+    flex-wrap: nowrap !important;
+    width: 300px;
+    margin-right: 10px;
+    padding-left: 5px !important;
+    box-shadow: inset -5px 0 5px rgba(170, 170, 170, 0.1); /* Внутренняя тень справа */
   }
 
   .email {

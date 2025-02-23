@@ -16,6 +16,7 @@ const ClientInfo = () => {
   return (
     <section className={classes["clientinfo-container"]}>
       <div
+        className={classes["overlay"]}
         style={{
           display: "flex",
           justifyContent: "space-between",
@@ -27,17 +28,17 @@ const ClientInfo = () => {
         <div className={classes["content"]}>
           {/* почта  */}
           <div className={classes["email"]}>
-            <a href="#">
+            <a href="mailto:bilol-01@mail.ru">
               <Mail />
-              <p>sales@pv-system.net</p>
+              <p>bilol-01@mail.ru</p>
             </a>
           </div>
 
           {/* номер телефона */}
           <div className={classes["phone"]}>
-            <a href="tel:+992 90 000 0596">
+            <a href="tel:+992 901 000 596">
               <Phone />
-              <p>+992 90 000 0596</p>
+              <p>+992 901-000-596</p>
             </a>
           </div>
 
@@ -50,7 +51,7 @@ const ClientInfo = () => {
               <Navigation />
             </a>
             <a
-              href="https://www.instagram.com/solar_system.tj/"
+              href="https://www.instagram.com/solartech.tj/"
               target="_blank"
               rel="noopener noreferrer"
             >

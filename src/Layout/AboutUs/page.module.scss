@@ -77,6 +77,17 @@
         line-height: 1.5em;
         font-size: 16px;
       }
+
+      .content-text {
+        max-height: 510px;
+        overflow-y: scroll;
+
+        border-radius: 10px;
+
+        &::-webkit-scrollbar {
+          height: 8px;
+        }
+      }
     }
 
     &__right-section {
@@ -185,6 +196,14 @@
       margin-top: 20px;
       &__left-section {
         padding: 15px;
+
+        .content-text {
+          padding: 10px 5px 0px 10px;
+          max-height: 410px;
+          overflow: scroll;
+          border-radius: 20px 20px 0 0;
+          box-shadow: -2px 2px 20px rgba(0, 0, 0, 0.2);
+        }
       }
     }
   }

@@ -8,12 +8,14 @@ import {
   Select,
   Table,
   Tabs,
+  Tooltip,
   Typography,
   Upload,
 } from "antd";
 import "antd/dist/reset.css";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
+import { truncate } from "../utils/truncate";
 import classes from "./adminpanel.module.scss";
 
 const { TabPane } = Tabs;
@@ -60,6 +62,7 @@ const AdminPanel = ({
       title: "Id",
       dataIndex: "id",
       key: "id",
+      render: (id) => <Text copyable={true}>{id}</Text>,
     },
     {
       title: "Название продукта",
@@ -90,7 +93,11 @@ const AdminPanel = ({
       key: "description",
       width: 300,
       align: "center",
-      render: (description) => <Text copyable={true}>{description}</Text>,
+      render: (description) => (
+        <Tooltip title={description}>
+          <Text copyable>{truncate(description, 110)}</Text>
+        </Tooltip>
+      ),
     },
     {
       title: "Редактор",
