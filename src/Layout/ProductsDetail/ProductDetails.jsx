@@ -8,6 +8,7 @@ import ClientInfo from "../ClientInfo/ClientInfo";
 import Navbar from "../Navbar/Navbar";
 import classes from "./productDetails.module.scss";
 import background from "/public/assets/about-us/background.jpg";
+import { truncate } from "../../utils/truncate";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -85,9 +86,11 @@ const ProductDetails = () => {
             </span>
           </Link>
           {product.map((item) => (
-            <h1 style={{ textTransform: "uppercase" }} key={item.id}>
-              {item?.title}
-            </h1>
+            <>
+              <h1 style={{ textTransform: "uppercase" }} key={item.id}>
+                {truncate(item?.title, 15)}
+              </h1>
+            </>
           ))}
         </div>
       </div>
@@ -106,7 +109,6 @@ const ProductDetails = () => {
             })}
           </div>
 
-          {console.log("product: ", product)}
           <div className={classes["product-container-info__right-section"]}>
             {product.map((item) => (
               <div

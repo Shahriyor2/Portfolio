@@ -48,21 +48,26 @@ const Footer = ({ categoriesData }) => {
             {/* содержимое товаров */}
             <div className={classes["overlay__contacts_list"]}>
               <ul>
-                <li>
-                  <a href="tel:+992 90 000 0596">
+                <a href="tel:+992 90 000 0596">
+                  <li>
                     <Phone /> <span> +992 90 000 0596 </span>
-                  </a>
-                </li>
-                <li>
-                  <Mail /> <span> sales@pv-system.net </span>
-                </li>
-                <li>
-                  <Map />
+                  </li>
+                </a>
+                <a href="mailto:bilol-01@mail.ru">
+                  <li>
+                    <Mail /> <span> sales@pv-system.net </span>
+                  </li>
+                </a>
 
-                  <span>
-                    3rd floor,No 1559 East Zhuan Xing Road,Shanghai,China.
-                  </span>
-                </li>
+                <a
+                  href="https://www.google.com/maps?q=38.5598,68.7870"
+                  target="_blank"
+                >
+                  <li>
+                    <Map />
+                    <span>Tajikistan Dushanbe</span>
+                  </li>
+                </a>
               </ul>
             </div>
           </div>
