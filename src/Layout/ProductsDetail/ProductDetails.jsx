@@ -15,6 +15,14 @@ const ProductDetails = () => {
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 480);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -86,11 +94,9 @@ const ProductDetails = () => {
             </span>
           </Link>
           {product.map((item) => (
-            <>
-              <h1 style={{ textTransform: "uppercase" }} key={item.id}>
-                {truncate(item?.title, 15)}
-              </h1>
-            </>
+            <h1 style={{ textTransform: "uppercase" }} key={item.id}>
+              {isMobile ? truncate(item?.title, 15) : item?.title}
+            </h1>
           ))}
         </div>
       </div>

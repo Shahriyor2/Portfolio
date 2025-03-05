@@ -44,7 +44,7 @@
 
   .first-overlay {
     border-bottom: 1px solid gray;
-    margin-bottom: 20px;
+    margin-bottom: 63px;
   }
 
   .product-container-info {
@@ -52,19 +52,19 @@
     padding: 30px;
     margin: 0px auto;
     display: flex;
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
     gap: 14px;
 
     &__left-section {
       width: 100%;
-      max-width: 494px;
+      max-width: 520px;
       max-height: 550px;
       border: 1px solid rgb(224, 224, 224);
-      overflow: hidden;
+      // overflow: hidden;
       padding: 8px;
 
       img {
-        width: 100%;
+        // width: 100%;
         height: 500px;
         object-fit: cover;
       }
@@ -176,6 +176,11 @@
 
       &__left-section {
         max-height: none;
+
+        img {
+          width: 100%;
+          object-fit: fill;
+        }
       }
 
       &__right-section {
